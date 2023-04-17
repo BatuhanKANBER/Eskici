@@ -5410,6 +5410,7 @@ module.exports = {
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+__webpack_require__(/*! ./user-delete-button */ "./resources/js/user-delete-button.js");
 
 /***/ }),
 
@@ -5456,6 +5457,32 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
 //     enabledTransports: ['ws', 'wss'],
 // });
+
+/***/ }),
+
+/***/ "./resources/js/user-delete-button.js":
+/*!********************************************!*\
+  !*** ./resources/js/user-delete-button.js ***!
+  \********************************************/
+/***/ (() => {
+
+$(document).ready(function () {
+  $("a.delete-button").on("click", function (e) {
+    e.preventDefault();
+    var url = $(this).attr("href");
+    if (url !== null) {
+      var confirmation = confirm("Bu kaydı silmek istediğinizden emin misin?");
+      if (confirmation) {
+        axios["delete"](url).then(function (result) {
+          console.log(result.data);
+          $('#' + result.data.id).remove();
+        })["catch"](function (error) {
+          console.log(error);
+        });
+      }
+    }
+  });
+});
 
 /***/ }),
 
