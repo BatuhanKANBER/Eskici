@@ -111,14 +111,28 @@
                         <form action="{{url("/users/$user->user_id")}}" method="POST">
                             @csrf
                             @method("PUT")
+                            <input type="hidden" name="user_id" value="{{$user->user_id}}">
                             <div class="mb-3">
-                                <label for="name" class="form-label">Ad Soyad</label>
-                                <input name="name" type="text" class="form-control" id="name" value="{{$user->name}}">
+                                <label for="name" class="form-label">Ad</label>
+                                <input name="name" type="text" class="form-control" id="name" value="{{old("name",$user->name)}}">
+                                @error("name")
+                                <span class="text-danger">{{$message}}</span>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="surname" class="form-label">Soyad</label>
+                                <input name="surname" type="text" class="form-control" id="surname" value="{{old("surname",$user->surname)}}">
+                                @error("surname")
+                                <span class="text-danger">{{$message}}</span>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Email</label>
                                 <input name="email" type="email" class="form-control" id="exampleInputEmail1"
-                                       aria-describedby="emailHelp" value="{{$user->email}}">
+                                       aria-describedby="emailHelp" value="{{old("email",$user->email)}}">
+                                @error("email")
+                                <span class="text-danger">{{$message}}</span>
+                                @enderror
                             </div>
                             <div class="form-check form-switch">
                                 <input name="is_admin" class="form-check-input" type="checkbox" role="switch"

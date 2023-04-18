@@ -117,7 +117,8 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Kullanıcı Adı</th>
+                                    <th scope="col">Ad</th>
+                                    <th scope="col">Soyad</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Durum</th>
                                     <th scope="col">İşlemler</th>
@@ -129,6 +130,7 @@
                                         <tr id="{{$user->user_id}}">
                                             <th> {{$loop->iteration}}</th>
                                             <td>{{$user->name}}</td>
+                                            <td>{{$user->surname}}</td>
                                             <td>{{$user->email}}</td>
                                             <td>
                                                 @if($user->is_active==1)
@@ -155,7 +157,7 @@
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="5"><p class="text-center">Herhangi bir kullanıcı bulunamadı.</p>
+                                        <td colspan="6"><p class="text-center">Herhangi bir kullanıcı bulunamadı.</p>
                                         </td>
                                     </tr>
                                 @endif
