@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\View\View;
 
 class UserController extends Controller
 {
@@ -18,7 +21,12 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function __construct()
+    {
+        $this->returnUrl = "/users";
+    }
+
+    public function index():View
     {
         $users = User::all();
         return view("backend.users.index", ["users" => $users]);
@@ -29,7 +37,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create():View
     {
         return view("backend.users.create_user");
     }
@@ -40,7 +48,7 @@ class UserController extends Controller
      * @param UserRequest $request
      * @return Response
      */
-    public function store(UserRequest $request)
+    public function store(UserRequest $request):RedirectResponse
     {
 
         $name = $request->get("name");
@@ -54,38 +62,26 @@ class UserController extends Controller
         $is_active = $is_active == "on" ? 1 : 0;
 
         $user = new User();
+
         $user->name = $name;
         $user->surname = $surname;
         $user->email = $email;
-        $user->password =Hash::make($password);
+        $user->password = Hash::make($password);
         $user->is_admin = $is_admin;
         $user->is_active = $is_active;
 
         $user->save();
 
-        return Redirect::to("/users");
+        return Redirect::to($this->returnUrl);
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return "show";
-    }
-
     /**
      * Show the form for editing the specified resource.
      *
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user):View
     {
-        $user = User::find($id);
         return view("backend.users.edit_user", ["user" => $user]);
     }
 
@@ -96,7 +92,7 @@ class UserController extends Controller
      * @param int $id
      * @return Response
      */
-    public function update(UserRequest $request, $id)
+    public function update(UserRequest $request, User $user):RedirectResponse
     {
 
         $name = $request->get("name");
@@ -108,8 +104,6 @@ class UserController extends Controller
         $is_admin = $is_admin == "on" ? 1 : 0;
         $is_active = $is_active == "on" ? 1 : 0;
 
-        $user = User::find($id);
-
         $user->name = $name;
         $user->surname = $surname;
         $user->email = $email;
@@ -117,7 +111,7 @@ class UserController extends Controller
         $user->is_active = $is_active;
 
         $user->save();
-        return Redirect::to("/users");
+        return Redirect::to($this->returnUrl);
     }
 
     /**
@@ -126,21 +120,22 @@ class UserController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user):RedirectResponse
     {
-        $user = User::find($id);
         $user->delete();
-        return Redirect::to("/users");
+        return Redirect::to($this->returnUrl);
     }
 
-    public function passwordForm(User $user){
-            return view("backend.users.password_form",["user"=>$user]);
+    public function passwordForm(User $user)
+    {
+        return view("backend.users.password_form", ["user" => $user]);
     }
 
-    public function passwordChange(UserRequest $request, User $user){
+    public function passwordChange(UserRequest $request, User $user)
+    {
         $password = $request->get("password");
-        $user->password=Hash::make($password);
+        $user->password = Hash::make($password);
         $user->save();
-        return Redirect::to("/users");
+        return Redirect::to($this->returnUrl);
     }
 }
