@@ -6,7 +6,7 @@
                 <div class="bg-secondary rounded h-100 p-4">
                     <div class="d-flex justify-content-between ">
                         <h4 class="mb-4">Kullanıcılar Tablosu</h4>
-                        <a href="/users/create" type="button" class="btn btn-lg btn-lg-square btn-outline-info m-2"><i
+                        <a href="/users/create" type="button" class="btn btn-lg btn-lg-square btn-outline-success m-2"><i
                                     class="fa fa-user-plus" aria-hidden="true"></i></a>
                     </div>
                     <div class="table-responsive">
@@ -52,6 +52,10 @@
                                                 <a href="{{url("/users/$user->user_id/password-change")}}" type="button"
                                                    class="btn btn-sm btn-sm-square btn-outline-light m-2"><i
                                                             class="fa fa-key"></i></a>
+                                                -
+                                                <a href="{{url("/users/$user->user_id/addresses")}}" type="button"
+                                                   class="btn btn-sm btn-sm-square btn-outline-info m-2"><i
+                                                            class="fa fa-map-marker"></i></a>
                                             </form>
                                         </td>
                                     </tr>
