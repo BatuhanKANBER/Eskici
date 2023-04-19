@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DarkPan - Bootstrap 5 Admin Template</title>
+    <title>Admin Paneli</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -48,7 +48,7 @@
 
     <!-- Sidebar Start -->
     <div class="sidebar pe-4 pb-3">
-        @include("backend.shared.sidebar")
+        @include("admin.shared.sidebar")
     </div>
     <!-- Sidebar End -->
 
@@ -56,7 +56,7 @@
     <!-- Content Start -->
     <div class="content">
         <!-- Navbar Start -->
-        @include("backend.shared.navbar")
+        @include("admin.shared.navbar")
         <!-- Navbar End -->
 
         <!-- Blank Start -->
@@ -65,7 +65,7 @@
 
 
         <!-- Footer Start -->
-        @include("backend.shared.footer")
+        @include("admin.shared.footer")
         <!-- Footer End -->
     </div>
     <!-- Content End -->

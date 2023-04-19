@@ -1,4 +1,4 @@
-@extends("backend.shared.theme")
+@extends("admin.shared.theme")
 @section("content")
     <div class="container-fluid pt-4 px-4">
         <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
@@ -7,7 +7,7 @@
                     <div class="d-flex justify-content-between ">
                         <h4 class="mb-4">Kullanıcılar Tablosu</h4>
                         <a href="/users/create" type="button" class="btn btn-lg btn-lg-square btn-outline-info m-2"><i
-                                class="fa fa-user-plus" aria-hidden="true"></i></a>
+                                    class="fa fa-user-plus" aria-hidden="true"></i></a>
                     </div>
                     <div class="table-responsive">
                         <table class="table">
@@ -42,16 +42,16 @@
                                                 @method("DELETE")
                                                 <a href="{{url("/users/$user->user_id/edit")}}" type="button"
                                                    class="btn btn-sm btn-sm-square btn-outline-warning m-2"><i
-                                                        class="fa fa-pencil-square-o"></i></a>
+                                                            class="fa fa-pencil-square-o"></i></a>
                                                 -
                                                 <button type="submit"
                                                         class="delete-button btn btn-sm btn-sm-square btn-outline-primary m-2">
                                                     <i
-                                                        class="fa fa-trash-o"></i></button>
+                                                            class="fa fa-trash-o"></i></button>
                                                 -
                                                 <a href="{{url("/users/$user->user_id/password-change")}}" type="button"
                                                    class="btn btn-sm btn-sm-square btn-outline-light m-2"><i
-                                                        class="fa fa-key"></i></a>
+                                                            class="fa fa-key"></i></a>
                                             </form>
                                         </td>
                                     </tr>

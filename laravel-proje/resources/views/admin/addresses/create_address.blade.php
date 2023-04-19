@@ -1,4 +1,4 @@
-@extends("backend.shared.theme")
+@extends("admin.shared.theme")
 @section("content")
     <div class="container-fluid pt-4 px-4">
         <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
@@ -39,7 +39,7 @@
                             @enderror
                         </div>
                         <div class="mb-3 form-check">
-                            <input  onclick="myFunction1()" type="checkbox" class="form-check-input" id="passwordCheck1">
+                            <input onclick="myFunction1()" type="checkbox" class="form-check-input" id="passwordCheck1">
                             <label class="form-check-label" for="passwordCheck1">Göster</label>
                         </div>
                         <div class="mb-3">
@@ -53,7 +53,7 @@
                         </div>
                         <div class="mb-3 form-check">
                             <input onclick="myFunction2()" type="checkbox" class="form-check-input" id="passwordCheck2">
-                            <label  class="form-check-label" for="passwordCheck2">Göster</label>
+                            <label class="form-check-label" for="passwordCheck2">Göster</label>
                         </div>
                         <div class="form-check form-switch">
                             <input name="is_admin" class="form-check-input" type="checkbox" role="switch"
@@ -84,6 +84,7 @@
                 x.type = "password";
             }
         }
+
         function myFunction2() {
             var x = document.getElementById("password_confirmation");
             if (x.type === "password") {

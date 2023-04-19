@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
@@ -29,7 +29,7 @@ class UserController extends Controller
     public function index():View
     {
         $users = User::all();
-        return view("backend.users.index", ["users" => $users]);
+        return view("admin.users.index", ["users" => $users]);
     }
 
     /**
@@ -39,7 +39,7 @@ class UserController extends Controller
      */
     public function create():View
     {
-        return view("backend.users.create_user");
+        return view("admin.users.create_user");
     }
 
     /**
@@ -82,7 +82,7 @@ class UserController extends Controller
      */
     public function edit(User $user):View
     {
-        return view("backend.users.edit_user", ["user" => $user]);
+        return view("admin.users.edit_user", ["user" => $user]);
     }
 
     /**
@@ -128,7 +128,7 @@ class UserController extends Controller
 
     public function passwordForm(User $user)
     {
-        return view("backend.users.password_form", ["user" => $user]);
+        return view("admin.users.password_form", ["user" => $user]);
     }
 
     public function passwordChange(UserRequest $request, User $user)
