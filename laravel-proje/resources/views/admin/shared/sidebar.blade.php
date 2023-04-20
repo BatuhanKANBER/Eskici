@@ -17,5 +17,6 @@
     <div class="navbar-nav w-100">
         <a href="/users" class="nav-item nav-link"><i class="fa fa-users"></i>Kullanıcılar</a>
         <a href="/categories" class="nav-item nav-link"><i class="fa fa-tags"></i>Kategoriler</a>
+        <a href="/products" class="nav-item nav-link"><i class="fa fa-product-hunt"></i>Ürünler</a>
     </div>
 </nav>
