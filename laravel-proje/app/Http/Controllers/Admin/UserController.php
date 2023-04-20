@@ -72,7 +72,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return Redirect::to($this->returnUrl);
+        return Redirect::to("/users");
     }
     /**
      * Show the form for editing the specified resource.
@@ -111,7 +111,7 @@ class UserController extends Controller
         $user->is_active = $is_active;
 
         $user->save();
-        return Redirect::to($this->returnUrl);
+        return Redirect::to("/users");
     }
 
     /**
@@ -123,7 +123,7 @@ class UserController extends Controller
     public function destroy(User $user):RedirectResponse
     {
         $user->delete();
-        return Redirect::to($this->returnUrl);
+        return Redirect::to("/users");
     }
 
     public function passwordForm(User $user)
@@ -136,6 +136,6 @@ class UserController extends Controller
         $password = $request->get("password");
         $user->password = Hash::make($password);
         $user->save();
-        return Redirect::to($this->returnUrl);
+        return Redirect::to("/users");
     }
 }

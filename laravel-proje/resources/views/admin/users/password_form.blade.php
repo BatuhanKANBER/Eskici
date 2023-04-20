@@ -4,7 +4,12 @@
         <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
             <div class="col-12">
                 <div class="bg-secondary rounded h-100 p-4">
-                    <h6 class="mb-4">Şifre Değiştirme</h6>
+                    <div class="d-flex justify-content-between ">
+                        <h6 class="mb-4">Şifre Değiştirme</h6>
+                        <a href="/users" type="button"
+                           class="btn btn-lg btn-lg-square btn-outline-light m-2"><i
+                                class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                    </div>
                     <form action="{{url("/users/$user->user_id/password-change")}}" method="POST">
                         @csrf
                         <input type="hidden" name="user_id" value="{{$user->user_id}}">

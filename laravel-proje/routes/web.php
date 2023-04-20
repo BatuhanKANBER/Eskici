@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AddressController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,12 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return "ANA SAYFA";
 });
 
-Route::resource('users',\App\Http\Controllers\Admin\UserController::class);
+Route::resource('users',UserController::class);
 
-Route::get("/users/{user}/password-change",[\App\Http\Controllers\Admin\UserController::class, "passwordForm"]);
-Route::post("/users/{user}/password-change",[\App\Http\Controllers\Admin\UserController::class, "passwordChange"]);
+Route::get("/users/{user}/password-change",[UserController::class, "passwordForm"]);
+Route::post("/users/{user}/password-change",[UserController::class, "passwordChange"]);
 
-Route::resource("/users/{user}/addresses",\App\Http\Controllers\Admin\AddressController::class);
+Route::resource("/users/{user}/addresses",AddressController::class);
