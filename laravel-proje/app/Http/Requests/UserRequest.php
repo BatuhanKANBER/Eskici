@@ -23,7 +23,7 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        $user_id=$this->request->get("user_id");
+        $user_id = $this->request->get("user_id");
         return [
             "name" => "required|sometimes|min:3",
             "surname" => "required|sometimes|min:3",
@@ -32,7 +32,7 @@ class UserRequest extends FormRequest
         ];
     }
 
-    public  function messages()
+    public function messages()
     {
         return [
             "name.required" => "Bu alan zorunludur.",
@@ -41,7 +41,7 @@ class UserRequest extends FormRequest
             "surname.min" => "Soyad alanı en az 3 karakterden oluşmalıdır.",
             "email.required" => "Bu alan zorunludur.",
             "email.email" => "Girdiğiniz değer eposta formatına uygun olmalıdır.",
-            "email.unique"=>"Girdiğiniz eposta sistemde başka bir kullanıcı tarafından kullanılıyor",
+            "email.unique" => "Girdiğiniz eposta sistemde başka bir kullanıcı tarafından kullanılıyor",
             "password.required" => "Bu alan zorunludur.",
             "password.min" => "En az 6 karakterden oluşmalıdır.",
             "password.confirmed" => "Girilen şifreler uyuşmuyor.",

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AddressController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +20,11 @@ Route::get('/', function () {
     return "ANA SAYFA";
 });
 
-Route::resource('users',UserController::class);
+Route::resource('/users', UserController::class);
 
-Route::get("/users/{user}/password-change",[UserController::class, "passwordForm"]);
-Route::post("/users/{user}/password-change",[UserController::class, "passwordChange"]);
+Route::get("/users/{user}/password-change", [UserController::class, "passwordForm"]);
+Route::post("/users/{user}/password-change", [UserController::class, "passwordChange"]);
 
-Route::resource("/users/{user}/addresses",AddressController::class);
+Route::resource("/users/{user}/addresses", AddressController::class);
+
+Route::resource("/categories", CategoryController::class);
