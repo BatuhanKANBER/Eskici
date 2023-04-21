@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\UI\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,11 +18,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//UI
+Route::get('/', [HomeController::class, "index"]);
+Route::get('/products-page', [\App\Http\Controllers\UI\ProductController::class, "index"]);
+Route::get('/products-page/category/{categorySlug?}', [\App\Http\Controllers\UI\ProductController::class, "index"]);
 
-Route::get('/', function () {
-    return "ANA SAYFA";
-});
-
+//ADMIN
 Route::resource('/users', UserController::class);
 
 Route::get("/users/{user}/password-change", [UserController::class, "passwordForm"]);
