@@ -29,7 +29,7 @@
                                 <option selected>Seçiniz</option>
                                 @foreach($categories as $category)
                                     <option
-                                        value="{{$category->category_id}}" {{$product->category_id==$category->category_id ? "selected":""}}>{{old("name",$category->name)}}</option>
+                                        value="{{$category->category_id}}" {{$product->category_id==$category->category_id ? "selected":""}}>{{old("name",$category->is_active==true ? "$category->name":null)}}</option>
                                 @endforeach
                             </select>
                         </div>

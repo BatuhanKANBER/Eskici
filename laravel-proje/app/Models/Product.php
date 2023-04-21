@@ -10,9 +10,9 @@ class Product extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $primaryKey= "product_id";
+    protected $primaryKey = "product_id";
 
-    protected $fillable=[
+    protected $fillable = [
         "product_id",
         "category_id",
         "name",
@@ -24,7 +24,13 @@ class Product extends Model
         "is_active"
     ];
 
-    public function category(){
-        return $this->hasOne(Category::class,"category_id","category_id");
+    public function category()
+    {
+        return $this->hasOne(Category::class, "category_id", "category_id");
+    }
+
+    public function images()
+    {
+        return $this->hasMany(ProductImage::class, "product_id", "product_id");
     }
 }
