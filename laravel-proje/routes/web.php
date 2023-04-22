@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AddressController;
+use App\Http\Controllers\Admin\CategoryImageController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\UserController;
@@ -36,3 +37,5 @@ Route::resource("/categories", CategoryController::class);
 Route::resource("/products", ProductController::class);
 
 Route::resource("/products/{product}/images", ProductImageController::class);
+
+Route::resource("/categories/{category}/category_images", CategoryImageController::class);

@@ -18,6 +18,7 @@
                                 <th scope="col">Kategori Ad</th>
                                 <th scope="col">Slug</th>
                                 <th scope="col">Durum</th>
+                                <th scope="col">Favori</th>
                                 <th scope="col">İşlemler</th>
                             </tr>
                             </thead>
@@ -33,6 +34,13 @@
                                                 <span class="badge bg-success">Aktif</span>
                                             @elseif($category->is_active==0)
                                                 <span class="badge bg-danger">Pasif</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($category->is_favorite==1)
+                                                <span class="badge bg-success">Evet</span>
+                                            @elseif($category->is_favorite==0)
+                                                <span class="badge bg-danger">Hayır</span>
                                             @endif
                                         </td>
                                         <td class="d-flex">
@@ -51,6 +59,10 @@
                                                     <i
                                                         class="fa fa-trash-o"></i></button>
                                             </form>
+                                            <a href="{{url("/categories/$category->category_id/category_images")}}"
+                                               type="button"
+                                               class="btn btn-sm btn-sm-square btn-outline-info m-2"><i
+                                                    class="fa fa-picture-o"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

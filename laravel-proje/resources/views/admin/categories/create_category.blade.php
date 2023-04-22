@@ -25,6 +25,12 @@
                             <label class="form-check-label" for="is_activeSwitchCheckDefault">Aktif Kategori
                             </label>
                         </div>
+                        <div class="form-check form-switch">
+                            <input name="is_favorite" class="form-check-input" type="checkbox" role="switch"
+                                   id="is_favoriteSwitchCheckDefault">
+                            <label class="form-check-label" for="is_favoriteSwitchCheckDefault">Favori Kategori
+                            </label>
+                        </div>
                         <br>
                         <button type="submit" class="btn btn-outline-danger">Kaydet</button>
                     </form>

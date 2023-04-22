@@ -30,7 +30,7 @@
                                         <th> {{$loop->iteration}}</th>
                                         <td>{{$product->name}}</td>
                                         <td>{{$product->category->name}}</td>
-                                        <td>{{$product->price}}</td>
+                                        <td>{{$product->price}}&#8378;</td>
                                         <td>
                                             @if($product->is_active==1)
                                                 <span class="badge bg-success">Aktif</span>

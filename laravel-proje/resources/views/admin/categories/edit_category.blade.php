@@ -10,7 +10,8 @@
                            class="btn btn-lg btn-lg-square btn-outline-light m-2"><i
                                 class="fa fa-arrow-left" aria-hidden="true"></i></a>
                     </div>
-                    <form action="{{url("/categories/$category->category_id")}}" method="POST" autocomplete="off" novalidate>
+                    <form action="{{url("/categories/$category->category_id")}}" method="POST" autocomplete="off"
+                          novalidate>
                         @csrf
                         @method("PUT")
                         <input type="hidden" name="category_id" value="{{$category->category_id}}">
@@ -33,7 +34,13 @@
                         <div class="form-check form-switch">
                             <input name="is_active" class="form-check-input" type="checkbox" role="switch"
                                    id="is_activeSwitchCheckDefault" {{$category->is_active == 1 ? "checked":""}}>
-                            <label class="form-check-label" for="is_defaultSwitchCheckDefault">Aktif Kategori
+                            <label class="form-check-label" for="is_activeSwitchCheckDefault">Aktif Kategori
+                            </label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input name="is_favorite" class="form-check-input" type="checkbox" role="switch"
+                                   id="is_favoriteSwitchCheckDefault" {{$category->is_favorite == 1 ? "checked":""}}>
+                            <label class="form-check-label" for="is_favoriteSwitchCheckDefault">Favori Kategori
                             </label>
                         </div>
                         <br>

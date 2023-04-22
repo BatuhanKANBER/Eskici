@@ -52,13 +52,16 @@ class CategoryController extends Controller
         $name = $request->get("name");
         $slug = $request->get("slug");
         $is_active = $request->get("is_active", default: 0);
+        $is_favorite = $request->get("is_favorite", default: 0);
 
         $is_active = $is_active == "on" ? 1 : 0;
+        $is_favorite = $is_favorite == "on" ? 1 : 0;
 
         $category = new Category();
         $category->name = $name;
         $category->slug = $slug;
         $category->is_active = $is_active;
+        $category->is_favorite = $is_favorite;
         $category->save();
 
         return Redirect::to("/categories");
@@ -87,12 +90,15 @@ class CategoryController extends Controller
         $name = $request->get("name");
         $slug = $request->get("slug");
         $is_active = $request->get("is_active", default: 0);
+        $is_favorite = $request->get("is_favorite", default: 0);
 
         $is_active = $is_active == "on" ? 1 : 0;
+        $is_favorite = $is_favorite == "on" ? 1 : 0;
 
         $category->name = $name;
         $category->slug = $slug;
         $category->is_active = $is_active;
+        $category->is_favorite = $is_favorite;
         $category->save();
 
         return Redirect::to("/categories");

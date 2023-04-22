@@ -16,11 +16,17 @@ class Category extends Model
         "category_id",
         "name",
         "slug",
-        "is_active"
+        "is_active",
+        "is_favorite"
     ];
 
     public function products()
     {
         return $this->hasMany(Product::class, "category_id", "category_id");
+    }
+
+    public function images()
+    {
+        return $this->hasMany(CategoryImage::class, "category_id", "category_id");
     }
 }

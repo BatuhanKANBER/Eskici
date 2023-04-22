@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductImage extends Model
+class CategoryImage extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = "image_id";
+    protected $primaryKey = "category_image_id";
 
     protected $fillable = [
-        "image_id",
-        "product_id",
+        "category_image_id",
+        "category_id",
         "image_url",
-        "alt",
-        "seq"
+        "alt"
     ];
 }
