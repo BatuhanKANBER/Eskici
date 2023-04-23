@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\UI\ContactController;
 use App\Http\Controllers\UI\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, "index"]);
 Route::get('/products-page', [\App\Http\Controllers\UI\ProductController::class, "index"]);
 Route::get('/products-page/category/{categorySlug?}', [\App\Http\Controllers\UI\ProductController::class, "index"]);
+Route::get('/contact-page', [ContactController::class, "index"]);
 
 //ADMIN
 Route::resource('/users', UserController::class);

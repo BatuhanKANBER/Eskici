@@ -20,7 +20,7 @@
                         <a class="text-dark mb-2" href="/products-page"><i
                                 class="fa fa-angle-right mr-2"></i>Ürünler</a>
                         <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Hakkımızda</a>
-                        <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>İletişim</a>
+                        <a class="text-dark mb-2" href="/contact-page"><i class="fa fa-angle-right mr-2"></i>İletişim</a>
                         <a class="text-dark mb-2" href="#"><i
                                 class="fa fa-angle-right mr-2"></i>SSS</a>
                     </div>

@@ -11,7 +11,8 @@
             <a href="/products-page" class="nav-item nav-link">Hepsi</a>
             @if(count($categories)>0)
                 @foreach($categories as $category)
-                    <a href="/products-page/category/{{$category->slug}}" class="nav-item nav-link">{{$category->name}}</a>
+                    <a href="/products-page/category/{{$category->slug}}"
+                       class="nav-item nav-link">{{$category->name}}</a>
                 @endforeach
             @endif
         </div>
