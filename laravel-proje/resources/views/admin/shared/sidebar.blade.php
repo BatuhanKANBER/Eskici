@@ -18,5 +18,6 @@
         <a href="/users" class="nav-item nav-link"><i class="fa fa-users"></i>Kullanıcılar</a>
         <a href="/categories" class="nav-item nav-link"><i class="fa fa-th-large"></i>Kategoriler</a>
         <a href="/products" class="nav-item nav-link"><i class="fa fa-tags"></i>Ürünler</a>
+        <a href="/faqs" class="nav-item nav-link"><i class="fa fa-question-circle-o"></i>SSS</a>
     </div>
 </nav>

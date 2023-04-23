@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\Admin\AddressController;
 use App\Http\Controllers\Admin\CategoryImageController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\UI\ContactController;
+use App\Http\Controllers\UI\FaqsController;
 use App\Http\Controllers\UI\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +27,7 @@ Route::get('/', [HomeController::class, "index"]);
 Route::get('/products-page', [\App\Http\Controllers\UI\ProductController::class, "index"]);
 Route::get('/products-page/category/{categorySlug?}', [\App\Http\Controllers\UI\ProductController::class, "index"]);
 Route::get('/contact-page', [ContactController::class, "index"]);
+Route::get('/faqs-page', [FaqsController::class, "index"]);
 
 //ADMIN
 Route::resource('/users', UserController::class);
@@ -41,3 +44,5 @@ Route::resource("/products", ProductController::class);
 Route::resource("/products/{product}/images", ProductImageController::class);
 
 Route::resource("/categories/{category}/category_images", CategoryImageController::class);
+
+Route::resource("/faqs", FaqController::class);
