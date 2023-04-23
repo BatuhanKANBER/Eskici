@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\UI\AboutUsController;
 use App\Http\Controllers\UI\ContactController;
 use App\Http\Controllers\UI\FaqsController;
 use App\Http\Controllers\UI\HomeController;
@@ -28,6 +29,7 @@ Route::get('/products-page', [\App\Http\Controllers\UI\ProductController::class,
 Route::get('/products-page/category/{categorySlug?}', [\App\Http\Controllers\UI\ProductController::class, "index"]);
 Route::get('/contact-page', [ContactController::class, "index"]);
 Route::get('/faqs-page', [FaqsController::class, "index"]);
+Route::get('/about-us', [AboutUsController::class, "index"]);
 
 //ADMIN
 Route::resource('/users', UserController::class);

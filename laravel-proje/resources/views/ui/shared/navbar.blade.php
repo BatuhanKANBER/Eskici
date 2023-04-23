@@ -28,6 +28,7 @@
                         </div>
                         <a href="/" class="nav-item nav-link">Anasayfa</a>
                         <a href="/products-page" class="nav-item nav-link">Ürünler</a>
+                        <a href="/about-us" class="nav-item nav-link">Hakkımızda</a>
                         <a href="/contact-page" class="nav-item nav-link">İletişim</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0">

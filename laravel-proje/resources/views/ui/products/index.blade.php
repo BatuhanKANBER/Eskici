@@ -189,7 +189,7 @@
                                     <div
                                         class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                                         @if(count($product->images)>0)
-                                            <img width="500px" height="500px" class="img-fluid w-100"
+                                            <img width="400px" height="500px" class="img-fluid w-100"
                                                  src="{{asset("/storage/products/".$product->images[0]->image_url)}}"
                                                  alt="{{"/storage/products/".$product->images[0]->alt}}">
                                         @else
