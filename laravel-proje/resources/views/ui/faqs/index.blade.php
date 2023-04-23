@@ -10,14 +10,14 @@
                     <div class="card-header" id="headingOne">
                         <h5 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
-                                    data-target="{{"#".$faq->question}}"
+                                    data-target="{{"#a".$faq->faq_id}}"
                                     aria-expanded="true" aria-controls="collapseOne">
                                 {{$faq->question}}?
                             </button>
                         </h5>
                     </div>
 
-                    <div id="{{$faq->question}}" class="collapse" aria-labelledby="headingOne"
+                    <div id="{{"a".$faq->faq_id}}" class="collapse" aria-labelledby="headingOne"
                          data-parent="#accordionExample">
                         <div class="card-body">
                             <p> {{$faq->answer}}</p>

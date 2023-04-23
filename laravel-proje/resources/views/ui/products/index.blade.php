@@ -188,9 +188,15 @@
                                 <div class="card product-item border-0 mb-4">
                                     <div
                                         class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                        <img width="500px" height="500px" class="img-fluid w-100"
-                                             src="{{asset("/storage/products/".$product->images[0]->image_url)}}"
-                                             alt="{{"/storage/products/".$product->images[0]->alt}}">
+                                        @if(count($product->images)>0)
+                                            <img width="500px" height="500px" class="img-fluid w-100"
+                                                 src="{{asset("/storage/products/".$product->images[0]->image_url)}}"
+                                                 alt="{{"/storage/products/".$product->images[0]->alt}}">
+                                        @else
+                                            <img width="500px" height="500px" class="img-fluid w-100"
+                                                 src="{{asset('ui/img/no-image-avaliable.png')}}"
+                                                 alt="no image">
+                                        @endif
                                     </div>
                                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                                         <h6 class="text-truncate mb-3">{{$product->name}}</h6>
