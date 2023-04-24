@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Card extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $primaryKey = "card_id";
 
@@ -17,4 +17,9 @@ class Card extends Model
         "user_id",
         "code"
     ];
+
+    public function details()
+    {
+        return $this->hasMany(CardDetails::class, "card_id", "card_id");
+    }
 }

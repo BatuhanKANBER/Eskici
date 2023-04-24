@@ -25,6 +25,7 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{asset('ui/css/style.css')}}" rel="stylesheet">
+
 </head>
 
 <body>

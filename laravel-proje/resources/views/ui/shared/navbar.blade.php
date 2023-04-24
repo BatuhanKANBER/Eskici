@@ -32,8 +32,13 @@
                         <a href="/contact-page" class="nav-item nav-link">İletişim</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="" class="nav-item nav-link">Giriş Yap</a>
-                        <a href="" class="nav-item nav-link">Üye Ol</a>
+                        @auth()
+                            <a href="" class="nav-item nav-link">Hesabım</a>
+                            <a href="/logout" class="nav-item nav-link">Çıkış Yap</a>
+                        @else
+                            <a href="/login" class="nav-item nav-link">Giriş Yap</a>
+                            <a href="/register" class="nav-item nav-link">Üye Ol</a>
+                        @endauth
                     </div>
                 </div>
             </nav>
