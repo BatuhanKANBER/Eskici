@@ -40,7 +40,7 @@ Route::get('/products-page/category/{categorySlug?}', [\App\Http\Controllers\UI\
 Route::get('/contact-page', [ContactController::class, "index"]);
 Route::get('/faqs-page', [FaqsController::class, "index"]);
 Route::get('/about-us', [AboutUsController::class, "index"]);
-Route::group(["middleware" => "admin"], function () {
+Route::group(["middleware" => "user"], function () {
     Route::get("/my-basket", [CardController::class, 'index']);
     Route::get("/my-basket/add/{product}", [CardController::class, 'add']);
     Route::get("/my-basket/remove/{cardDetails}", [CardController::class, 'remove']);
@@ -57,8 +57,5 @@ Route::group(["middleware" => "admin"], function () {
     Route::resource("/products/{product}/images", ProductImageController::class);
     Route::resource("/categories/{category}/category_images", CategoryImageController::class);
     Route::resource("/faqs", FaqController::class);
-    Route::get("/my-basket", [CardController::class, 'index']);
-    Route::get("/my-basket/add/{product}", [CardController::class, 'add']);
-    Route::get("/my-basket/remove/{cardDetails}", [CardController::class, 'remove']);
 });
 
