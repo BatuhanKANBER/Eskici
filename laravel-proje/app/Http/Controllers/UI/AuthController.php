@@ -26,7 +26,11 @@ class AuthController extends Controller
         $rememberMe = $request->get("remember-me", false);
 
         if (Auth::attempt($credentials, $rememberMe)) {
-            return Redirect::to("/");
+            if (auth()->user()->role == "admin") {
+                return Redirect::to("users");
+            } else if (auth()->user()->role == "user") {
+                return Redirect::to("/");
+            }
         } else {
             return redirect()->back()->withErrors(
                 [
@@ -55,7 +59,7 @@ class AuthController extends Controller
         $user->surname = $surname;
         $user->email = $email;
         $user->password = Hash::make($password);
-        $user->is_admin = false;
+        $user->role = false;
         $user->is_active = true;
 
         $user->save();

@@ -45,7 +45,7 @@
                                 </td>
                                 <td class="align-middle">{{($detail->price*$detail->quantity)}}</td>
                                 <td class="align-middle">
-                                    <a href="/my-basket/remove/{{$detail->card_detail_id}}">Sepetten Sil</a>
+                                    <a href="my-basket/remove/{{$detail->card_detail_id}}">Sepetten Sil</a>
                                 </td>
                             </tr>
                         @endforeach

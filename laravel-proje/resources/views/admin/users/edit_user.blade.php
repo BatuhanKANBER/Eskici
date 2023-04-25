@@ -39,15 +39,15 @@
                             @enderror
                         </div>
                         <div class="form-check form-switch">
-                            <input name="is_admin" class="form-check-input" type="checkbox" role="switch"
-                                   id="is_adminSwitchCheckDefault" {{$user->is_admin == 1 ? "checked":""}}>
-                            <label class="form-check-label" for="is_adminSwitchCheckDefault">Yetkili Kullanıcı
-                            </label>
-                        </div>
-                        <div class="form-check form-switch">
                             <input name="is_active" class="form-check-input" type="checkbox" role="switch"
                                    id="is_activeSwitchCheckDefault" {{$user->is_active == 1 ? "checked":""}}>
                             <label class="form-check-label" for="is_activeSwitchCheckDefault">Aktif Kullanıcı
+                            </label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input name="role" class="form-check-input" type="checkbox" role="switch"
+                                   id="roleSwitchCheckDefault" {{$user->role == 1 ? "checked":""}}>
+                            <label class="form-check-label" for="roleSwitchCheckDefault">Yetkili Kullanıcı
                             </label>
                         </div>
                         <br>

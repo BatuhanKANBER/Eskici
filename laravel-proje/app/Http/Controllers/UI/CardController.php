@@ -7,6 +7,8 @@ use App\Models\Card;
 use App\Models\CardDetails;
 use App\Models\Category;
 use App\Models\Product;
+use http\Client\Request;
+use http\Env\Response;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -52,7 +54,7 @@ class CardController extends Controller
             "product_id" => $product->product_id,
             "quantity" => $quantity,
         ]);
-        return Redirect::to("/my-basket");
+        return back();
     }
 
     /**
@@ -65,6 +67,6 @@ class CardController extends Controller
     public function remove(CardDetails $cardDetails): RedirectResponse
     {
         $cardDetails->delete();
-        return Redirect::to("/my-basket");
+        return back();
     }
 }

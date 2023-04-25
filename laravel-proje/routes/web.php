@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AddressController;
 use App\Http\Controllers\Admin\CategoryImageController;
 use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\NotFoundController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\UserController;
@@ -32,7 +33,6 @@ Route::get("/register", [AuthController::class, "registerShow"]);
 Route::post("/register", [AuthController::class, "register"]);
 Route::get("/logout", [AuthController::class, "logout"]);
 
-
 //UI
 Route::get('/', [HomeController::class, "index"]);
 Route::get('/products-page', [\App\Http\Controllers\UI\ProductController::class, "index"]);
@@ -40,14 +40,15 @@ Route::get('/products-page/category/{categorySlug?}', [\App\Http\Controllers\UI\
 Route::get('/contact-page', [ContactController::class, "index"]);
 Route::get('/faqs-page', [FaqsController::class, "index"]);
 Route::get('/about-us', [AboutUsController::class, "index"]);
-Route::group(["middleware" => "user"], function () {
-    Route::get("/my-basket", [CardController::class, 'index']);
-    Route::get("/my-basket/add/{product}", [CardController::class, 'add']);
-    Route::get("/my-basket/remove/{cardDetails}", [CardController::class, 'remove']);
+//SEPET
+Route::prefix("user")->middleware(["auth", "role:user"])->name("user.")->group(function () {
+    Route::get("my-basket", [CardController::class, 'index']);
+    Route::get("my-basket/add/{product}", [CardController::class, 'add']);
+    Route::get("my-basket/remove/{cardDetails}", [CardController::class, 'remove']);
 });
 
 //ADMIN
-Route::group(["middleware" => "admin"], function () {
+Route::middleware(["auth", "role:admin"])->group(function () {
     Route::resource('/users', UserController::class);
     Route::get("/users/{user}/password-change", [UserController::class, "passwordForm"]);
     Route::post("/users/{user}/password-change", [UserController::class, "passwordChange"]);
@@ -58,4 +59,9 @@ Route::group(["middleware" => "admin"], function () {
     Route::resource("/categories/{category}/category_images", CategoryImageController::class);
     Route::resource("/faqs", FaqController::class);
 });
-
+//SEPET
+Route::prefix("admin")->middleware(["auth", "role:admin"])->group(function () {
+    Route::get("my-basket", [CardController::class, 'index']);
+    Route::get("my-basket/add/{product}", [CardController::class, 'add']);
+    Route::get("my-basket/remove/{cardDetails}", [CardController::class, 'remove']);
+});

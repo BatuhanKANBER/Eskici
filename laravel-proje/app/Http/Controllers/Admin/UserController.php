@@ -21,7 +21,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index():View
+    public function index(): View
     {
         $users = User::all();
         return view("admin.users.index", ["users" => $users]);
@@ -32,7 +32,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create():View
+    public function create(): View
     {
         return view("admin.users.create_user");
     }
@@ -43,17 +43,17 @@ class UserController extends Controller
      * @param UserRequest $request
      * @return Response
      */
-    public function store(UserRequest $request):RedirectResponse
+    public function store(UserRequest $request): RedirectResponse
     {
 
         $name = $request->get("name");
         $surname = $request->get("surname");
         $email = $request->get("email");
         $password = $request->get("password");
-        $is_admin = $request->get("is_admin", default: 0);
+        $role = $request->get("role", default: 0);
         $is_active = $request->get("is_active", default: 0);
 
-        $is_admin = $is_admin == "on" ? 1 : 0;
+        $role = $role == "on" ? 1 : 0;
         $is_active = $is_active == "on" ? 1 : 0;
 
         $user = new User();
@@ -62,20 +62,21 @@ class UserController extends Controller
         $user->surname = $surname;
         $user->email = $email;
         $user->password = Hash::make($password);
-        $user->is_admin = $is_admin;
+        $user->role = $role;
         $user->is_active = $is_active;
 
         $user->save();
 
         return Redirect::to("/users");
     }
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user):View
+    public function edit(User $user): View
     {
         return view("admin.users.edit_user", ["user" => $user]);
     }
@@ -87,22 +88,22 @@ class UserController extends Controller
      * @param int $id
      * @return Response
      */
-    public function update(UserRequest $request, User $user):RedirectResponse
+    public function update(UserRequest $request, User $user): RedirectResponse
     {
 
         $name = $request->get("name");
         $surname = $request->get("surname");
         $email = $request->get("email");
-        $is_admin = $request->get("is_admin", default: 0);
+        $role = $request->get("role", default: 0);
         $is_active = $request->get("is_active", default: 0);
 
-        $is_admin = $is_admin == "on" ? 1 : 0;
+        $role = $role == "on" ? 1 : 0;
         $is_active = $is_active == "on" ? 1 : 0;
 
         $user->name = $name;
         $user->surname = $surname;
         $user->email = $email;
-        $user->is_admin = $is_admin;
+        $user->role = $role;
         $user->is_active = $is_active;
 
         $user->save();
@@ -115,7 +116,7 @@ class UserController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user):RedirectResponse
+    public function destroy(User $user): RedirectResponse
     {
         $user->delete();
         return Redirect::to("/users");

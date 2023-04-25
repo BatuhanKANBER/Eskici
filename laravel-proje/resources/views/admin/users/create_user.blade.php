@@ -6,7 +6,7 @@
                 <div class="bg-secondary rounded h-100 p-4">
                     <div class="d-flex justify-content-between ">
                         <h6 class="mb-4">Yeni Kullanıcı Ekle</h6>
-                        <a href="/users" type="button"
+                        <a href="users" type="button"
                            class="btn btn-lg btn-lg-square btn-outline-light m-2"><i
                                 class="fa fa-arrow-left" aria-hidden="true"></i></a>
                     </div>
@@ -61,9 +61,9 @@
                             <label class="form-check-label" for="passwordCheck2">Göster</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input name="is_admin" class="form-check-input" type="checkbox" role="switch"
-                                   id="is_adminSwitchCheckDefault">
-                            <label class="form-check-label" for="is_adminSwitchCheckDefault">Yetkili Kullanıcı
+                            <input name="role" class="form-check-input" type="checkbox" role="switch"
+                                   id="roleSwitchCheckDefault">
+                            <label class="form-check-label" for="roleSwitchCheckDefault">Yetkili Kullanıcı
                             </label>
                         </div>
                         <div class="form-check form-switch">

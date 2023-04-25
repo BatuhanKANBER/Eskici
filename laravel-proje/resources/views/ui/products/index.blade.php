@@ -210,8 +210,25 @@
                                     <div class="card-footer d-flex justify-content-between bg-light border">
                                         <a href="" class="btn btn-sm text-dark p-0"><i
                                                 class="fas fa-eye text-primary mr-1"></i>İncele</a>
-                                        <a href="/my-basket/add/{{$product->product_id}}" class="btn btn-sm text-dark p-0"><i
-                                                class="fas fa-shopping-cart text-primary mr-1"></i>Sepete Ekle</a>
+                                        @if(\Illuminate\Support\Facades\Auth::user())
+                                            @if(\Illuminate\Support\Facades\Auth::user()->role=="admin")
+                                                <a href="admin/my-basket/add/{{$product->product_id}}"
+                                                   class="btn btn-sm text-dark p-0"><i
+                                                        class="fas fa-shopping-cart text-primary mr-1"></i>Sepete
+                                                    Ekle</a>
+                                            @elseif(\Illuminate\Support\Facades\Auth::user()->role=="user")
+                                                <a href="user/my-basket/add/{{$product->product_id}}"
+                                                   class="btn btn-sm text-dark p-0"><i
+                                                        class="fas fa-shopping-cart text-primary mr-1"></i>Sepete
+                                                    Ekle</a>
+                                            @endif
+                                        @else
+                                            <a href="/login"
+                                               class="btn btn-sm text-dark p-0"><i
+                                                    class="fas fa-shopping-cart text-primary mr-1"></i>Sepete
+                                                Ekle</a>
+                                        @endif
+
                                     </div>
                                 </div>
                             </div>

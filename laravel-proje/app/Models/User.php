@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -23,8 +24,8 @@ class User extends Authenticatable
         'surname',
         'email',
         'password',
-        'is_admin',
-        'is_active'
+        'is_active',
+        'role'
     ];
 
     /**
@@ -46,7 +47,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function addrs(){
-        return $this->hasMany(Address::class,"user_id","user_id");
+    public function addrs()
+    {
+        return $this->hasMany(Address::class, "user_id", "user_id");
+    }
+
+    public function role(): Attribute
+    {
+        return new Attribute(
+            get: fn($value) => ["user", "admin"][$value],
+        );
     }
 }
