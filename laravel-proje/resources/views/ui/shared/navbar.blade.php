@@ -33,7 +33,21 @@
                     </div>
                     <div class="navbar-nav ml-auto py-0">
                         @auth()
-                            <a href="" class="nav-item nav-link">Hesabım</a>
+                            @if(\Illuminate\Support\Facades\Auth::user())
+                                @if(\Illuminate\Support\Facades\Auth::user()->role=="admin")
+                                    <a href="/admin/profile" class="nav-item nav-link">
+                                        Hesabım
+                                    </a>
+                                @elseif(\Illuminate\Support\Facades\Auth::user()->role=="user")
+                                    <a href="/user/profile" class="nav-item nav-link">
+                                        Hesabım
+                                    </a>
+                                @endif
+                            @else
+                                <a href="/login" class="btn border">
+                                    <i class="fas fa-shopping-cart text-primary"></i>
+                                </a>
+                            @endif
                             <a href="/logout" class="nav-item nav-link">Çıkış Yap</a>
                         @else
                             <a href="/login" class="nav-item nav-link">Giriş Yap</a>

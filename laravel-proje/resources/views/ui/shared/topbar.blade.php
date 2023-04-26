@@ -49,11 +49,11 @@
         <div class="col-lg-3 col-6 text-right">
             @if(\Illuminate\Support\Facades\Auth::user())
                 @if(\Illuminate\Support\Facades\Auth::user()->role=="admin")
-                    <a href="admin/my-basket" class="btn border">
+                    <a href="/admin/my-basket" class="btn border">
                         <i class="fas fa-shopping-cart text-primary"></i>
                     </a>
                 @elseif(\Illuminate\Support\Facades\Auth::user()->role=="user")
-                    <a href="user/my-basket" class="btn border">
+                    <a href="/user/my-basket" class="btn border">
                         <i class="fas fa-shopping-cart text-primary"></i>
                     </a>
                 @endif

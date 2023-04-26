@@ -12,8 +12,8 @@ class HomeController extends Controller
 {
     public function index(): View
     {
-        $users = new User();
+        $user = new User();
         $categories = Category::all()->where("is_active", true);
-        return view("ui.home.index", ["categories" => $categories, "users" => $users]);
+        return view("ui.home.index", ["categories" => $categories, "user" => $user]);
     }
 }

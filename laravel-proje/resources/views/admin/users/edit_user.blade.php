@@ -31,6 +31,14 @@
                             @enderror
                         </div>
                         <div class="mb-3">
+                            <label for="phone_number" class="form-label">Telefon Numarası</label>
+                            <input name="phone_number" type="text" class="form-control" id="phone_number"
+                                   value="{{old("phone_number",$user->phone_number)}}">
+                            @error("phone_number")
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Email</label>
                             <input name="email" type="email" class="form-control" id="exampleInputEmail1"
                                    aria-describedby="emailHelp" value="{{old("email",$user->email)}}">

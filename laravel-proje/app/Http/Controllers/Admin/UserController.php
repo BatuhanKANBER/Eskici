@@ -48,6 +48,7 @@ class UserController extends Controller
 
         $name = $request->get("name");
         $surname = $request->get("surname");
+        $phone_number = $request->get("phone_number");
         $email = $request->get("email");
         $password = $request->get("password");
         $role = $request->get("role", default: 0);
@@ -60,6 +61,7 @@ class UserController extends Controller
 
         $user->name = $name;
         $user->surname = $surname;
+        $user->phone_number = $phone_number;
         $user->email = $email;
         $user->password = Hash::make($password);
         $user->role = $role;
@@ -93,6 +95,7 @@ class UserController extends Controller
 
         $name = $request->get("name");
         $surname = $request->get("surname");
+        $phone_number = $request->get("phone_number");
         $email = $request->get("email");
         $role = $request->get("role", default: 0);
         $is_active = $request->get("is_active", default: 0);
@@ -102,6 +105,7 @@ class UserController extends Controller
 
         $user->name = $name;
         $user->surname = $surname;
+        $user->phone_number = $phone_number;
         $user->email = $email;
         $user->role = $role;
         $user->is_active = $is_active;

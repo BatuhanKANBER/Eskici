@@ -1,5 +1,5 @@
 <nav class="navbar bg-secondary navbar-dark">
-    <a href="users" class="navbar-brand mx-4 mb-3">
+    <a href="/users" class="navbar-brand mx-4 mb-3">
         <h3 class="text-primary"><i class="fa fa-user-secret"></i>AdminPaneli</h3>
     </a>
     <div class="d-flex align-items-center ms-4 mb-4">
@@ -15,9 +15,9 @@
         </div>
     </div>
     <div class="navbar-nav w-100">
-        <a href="users" class="nav-item nav-link"><i class="fa fa-users"></i>Kullanıcılar</a>
-        <a href="categories" class="nav-item nav-link"><i class="fa fa-th-large"></i>Kategoriler</a>
-        <a href="products" class="nav-item nav-link"><i class="fa fa-tags"></i>Ürünler</a>
-        <a href="faqs" class="nav-item nav-link"><i class="fa fa-question-circle-o"></i>SSS</a>
+        <a href="/users" class="nav-item nav-link"><i class="fa fa-users"></i>Kullanıcılar</a>
+        <a href="/categories" class="nav-item nav-link"><i class="fa fa-th-large"></i>Kategoriler</a>
+        <a href="/products" class="nav-item nav-link"><i class="fa fa-tags"></i>Ürünler</a>
+        <a href="/faqs" class="nav-item nav-link"><i class="fa fa-question-circle-o"></i>SSS</a>
     </div>
 </nav>

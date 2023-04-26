@@ -68,10 +68,17 @@
                                     @enderror
                                 </div>
                             </div>
-                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                                <input name="phone_number" type="text" id="phone_number" class="form-control" value="{{old("phone_number")}}"/>
+                                <label class="form-label" for="phone_number">Telefon Numarası</label>
+                            </div>
+                            @error("phone_number")
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
+                            <!-- Email input phone_number-->
                             <div class="form-outline mb-4">
                                 <input name="email" type="email" id="email" class="form-control" value="{{old("email")}}"/>
-                                <label class="form-label" for="email">Email adresi</label>
+                                <label class="form-label" for="email">Email Adresi</label>
                             </div>
                             @error("email")
                             <span class="text-danger">{{$message}}</span>

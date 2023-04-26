@@ -5,6 +5,7 @@ namespace App\Http\Controllers\UI;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -20,6 +21,7 @@ class ProductController extends Controller
             $products = Product::all()->where("is_active", true);
         }
         $categories = Category::all()->where("is_active", true);
-        return view("ui.products.index", ["categories" => $categories, "products" => $products]);
+        $user = new User();
+        return view("ui.products.index", ["categories" => $categories, "products" => $products, "user" => $user]);
     }
 }

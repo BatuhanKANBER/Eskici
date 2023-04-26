@@ -7,6 +7,7 @@ use App\Models\Card;
 use App\Models\CardDetails;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
 use http\Client\Request;
 use http\Env\Response;
 use Illuminate\Http\RedirectResponse;
@@ -21,7 +22,8 @@ class CardController extends Controller
     {
         $card = $this->getOrCreateCart();
         $categories = Category::all()->where("is_active", true);
-        return view("ui.card.index", ["card" => $card, "categories" => $categories]);
+        $user = new User();
+        return view("ui.card.index", ["card" => $card, "categories" => $categories, "user" => $user]);
     }
 
     /**

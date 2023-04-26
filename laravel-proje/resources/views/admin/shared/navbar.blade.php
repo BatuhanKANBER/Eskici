@@ -16,7 +16,7 @@
                 <span class="d-none d-lg-inline-flex">{{Auth::user()->name." ".Auth::user()->surname}}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                <a href="#" class="dropdown-item">My Profile</a>
+                <a href="/admin-in/profile" class="dropdown-item">Profil</a>
                 <a href="/logout" class="dropdown-item">Çıkış Yap</a>
             </div>
         </div>

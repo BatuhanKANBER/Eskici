@@ -31,13 +31,13 @@ class AuthController extends Controller
             } else if (auth()->user()->role == "user") {
                 return Redirect::to("/");
             }
-        } else {
-            return redirect()->back()->withErrors(
-                [
-                    "email" => "Lütfen epostanızı kontrol ediniz.",
-                    "password" => "Lütfen şifrenizi kontrol ediniz.",
-                ]);
         }
+        return redirect()->back()->withErrors(
+            [
+                "email" => "Lütfen epostanızı kontrol ediniz.",
+                "password" => "Lütfen şifrenizi kontrol ediniz.",
+            ]);
+
     }
 
     public function registerShow(): View
@@ -50,6 +50,7 @@ class AuthController extends Controller
 
         $name = $request->get("name");
         $surname = $request->get("surname");
+        $phone_number = $request->get("phone_number");
         $email = $request->get("email");
         $password = $request->get("password");
 
@@ -57,6 +58,7 @@ class AuthController extends Controller
 
         $user->name = $name;
         $user->surname = $surname;
+        $user->phone_number = $phone_number;
         $user->email = $email;
         $user->password = Hash::make($password);
         $user->role = false;
