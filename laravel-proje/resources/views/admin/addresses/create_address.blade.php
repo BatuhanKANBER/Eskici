@@ -14,6 +14,13 @@
                         @csrf
                         <input type="hidden" name="user_id" value="{{$user->user_id}}">
                         <div class="mb-3">
+                            <label for="tittle" class="form-label">Başlık</label>
+                            <input name="tittle" type="text" class="form-control" id="tittle" value="{{old("tittle")}}">
+                            @error("tittle")
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
                             <label for="city" class="form-label">İl</label>
                             <input name="city" type="text" class="form-control" id="city" value="{{old("city")}}">
                             @error("city")

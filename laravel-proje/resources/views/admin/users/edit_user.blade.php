@@ -54,7 +54,7 @@
                         </div>
                         <div class="form-check form-switch">
                             <input name="role" class="form-check-input" type="checkbox" role="switch"
-                                   id="roleSwitchCheckDefault" {{$user->role == 1 ? "checked":""}}>
+                                   id="roleSwitchCheckDefault" {{$user->role == "admin" ? "checked":""}}>
                             <label class="form-check-label" for="roleSwitchCheckDefault">Yetkili Kullanıcı
                             </label>
                         </div>

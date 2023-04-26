@@ -5,7 +5,7 @@
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
                                                                                              width="150px"
-                                                                                             src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span
+                                                                                             src="{{url("ui/img/member.png")}}"><span
                         class="font-weight-bold">{{$user->name." ".$user->surname}}</span><span
                         class="text-black-50">{{$user->email}}</span><span> </span></div>
             </div>
@@ -35,11 +35,13 @@
                         </div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-12"><label class="labels">Varsayılan Adres</label> <select
-                                class="form-control" aria-label="Default select example"
-                                name="address_id" id="address_id">
-                                <option value="-1">Seçiniz</option>
-                            </select>
+                        <div class="col-md-12"><label class="labels">Varsayılan Adres</label><input type="text"
+                                                                                                    class="form-control text-capitalize"
+                                                                                                    @foreach($address as $addrs)
+                                                                                                        value="{{$addrs->is_default==true ? "$addrs->tittle - $addrs->city/$addrs->district":null}}"
+                                                                                                    @endforeach
+                                                                                                    disabled
+                            >
                         </div>
                     </div>
                 </div>
@@ -57,6 +59,9 @@
                             </a>
                         @endif
                     @endif
+                    <a href="/logout" class="btn btn-primary profile-button"
+                       type="submit">Çıkış Yap
+                    </a>
                 </div>
             </div>
         </div>

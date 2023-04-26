@@ -17,14 +17,16 @@ class ProfileController extends Controller
     {
         $categories = Category::all()->where("is_active", true);
         $user = Auth::user();
-        return view("ui.profile.index", ["user" => $user, "categories" => $categories]);
+        $address = $user->addrs;
+        return view("ui.profile.index", ["user" => $user, "categories" => $categories, "address" => $address]);
     }
 
     public function edit(User $user)
     {
         $categories = Category::all()->where("is_active", true);
         $userIn = Auth::user();
-        return view("ui.profile.edit_profile", ["user" => $user, "categories" => $categories, "userIn" => $userIn]);
+        $address = $user->addrs;
+        return view("ui.profile.edit_profile", ["user" => $user, "categories" => $categories, "userIn" => $userIn, "address" => $address]);
     }
 
     public function update(UserRequest $request, User $user): RedirectResponse

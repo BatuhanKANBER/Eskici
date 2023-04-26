@@ -48,7 +48,6 @@
                                     <i class="fas fa-shopping-cart text-primary"></i>
                                 </a>
                             @endif
-                            <a href="/logout" class="nav-item nav-link">Çıkış Yap</a>
                         @else
                             <a href="/login" class="nav-item nav-link">Giriş Yap</a>
                             <a href="/register" class="nav-item nav-link">Üye Ol</a>

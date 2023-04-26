@@ -55,7 +55,7 @@
                                                 -
                                                 <a href="{{url("/users/$user->user_id/addresses")}}" type="button"
                                                    class="btn btn-sm btn-sm-square btn-outline-info m-2"><i
-                                                            class="fa fa-map-marker"></i></a>
+                                                            class="fa fa-map-signs"></i></a>
                                             </form>
                                         </td>
                                     </tr>

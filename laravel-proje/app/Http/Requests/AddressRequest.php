@@ -26,6 +26,7 @@ class AddressRequest extends FormRequest
         $user_id=$this->request->get("user_id");
         return [
             "user_id" => "required|numeric",
+            "tittle" => "required",
             "city" => "required|min:3",
             "district" => "required|min:3",
             "zipcode" => "required|numeric|min:4",
@@ -38,6 +39,7 @@ class AddressRequest extends FormRequest
         return [
             "user_id.required" => "Bu alan zorunludur.",
             "user_id.numeric" => "Bu alan sayısal olmak zorunda.",
+            "tittle.required" => "Bu alan zorunludur.",
             "city.required" => "Bu alan zorunludur.",
             "city.min" => "Bu alan en az 3 karakter olmalıdır.",
             "district.required" => "Bu alan zorunludur.",

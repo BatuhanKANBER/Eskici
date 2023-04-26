@@ -6,7 +6,7 @@
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img
                         class="rounded-circle mt-3"
                         width="150px"
-                        src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span
+                        src="{{url("ui/img/member.png")}}"><span
                         class="font-weight-bold">{{$user->name." ".$user->surname}}</span><span
                         class="text-secondary-50">{{$user->email}}</span><span> </span></div>
             </div>
@@ -49,7 +49,7 @@
             <div class="col-md-2">
                 <div class="mt-5 text-center">
                     <a href="{{"/admin-in/profile/$user->user_id/edit"}}" class="btn btn-primary profile-button"
-                       type="submit"><i class="fa fa-edit"></i>
+                       type="button"><i class="fa fa-edit"></i>
                     </a>
                 </div>
             </div>

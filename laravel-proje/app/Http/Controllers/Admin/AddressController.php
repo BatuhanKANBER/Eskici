@@ -49,6 +49,7 @@ class AddressController extends Controller
         $address = new Address();
 
         $user_id = $request->get("user_id");
+        $tittle = $request->get("tittle");
         $city = $request->get("city");
         $district = $request->get("district");
         $zipcode = $request->get("zipcode");
@@ -57,6 +58,7 @@ class AddressController extends Controller
         $is_default = $is_default == "on" ? 1 : 0;
 
         $address->user_id = $user_id;
+        $address->tittle = $tittle;
         $address->city = $city;
         $address->district = $district;
         $address->zipcode = $zipcode;
@@ -74,7 +76,8 @@ class AddressController extends Controller
      */
     public function edit(User $user, Address $address): View
     {
-        return view("admin.addresses.edit_address", ["user" => $user, "address" => $address]);
+        $addrs = $user->addrs;
+        return view("admin.addresses.edit_address", ["user" => $user, "address" => $address, "addrs" => $addrs]);
     }
 
     /**
@@ -86,6 +89,7 @@ class AddressController extends Controller
      */
     public function update(AddressRequest $request, User $user, Address $address): RedirectResponse
     {
+        $tittle = $request->get("tittle");
         $city = $request->get("city");
         $district = $request->get("district");
         $zipcode = $request->get("zipcode");
@@ -93,6 +97,7 @@ class AddressController extends Controller
         $is_default = $request->get("is_default", default: 0);
         $is_default = $is_default == "on" ? 1 : 0;
 
+        $address->tittle = $tittle;
         $address->city = $city;
         $address->district = $district;
         $address->zipcode = $zipcode;

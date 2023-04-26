@@ -17,6 +17,14 @@
                         <input type="hidden" name="user_id" value="{{$user->user_id}}">
                         <input type="hidden" name="address_id" value="{{$address->address_id}}">
                         <div class="mb-3">
+                            <label for="tittle" class="form-label">Başlık</label>
+                            <input name="tittle" type="text" class="form-control" id="tittle"
+                                   value="{{old("tittle",$address->tittle)}}">
+                            @error("tittle")
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
                             <label for="city" class="form-label">İl</label>
                             <input name="city" type="text" class="form-control" id="city"
                                    value="{{old("city",$address->city)}}">
@@ -50,7 +58,8 @@
                         </div>
                         <div class="form-check form-switch">
                             <input name="is_default" class="form-check-input" type="checkbox" role="switch"
-                                   id="is_defaultSwitchCheckDefault" {{$address->is_default == 1 ? "checked":""}}>
+                                   id="is_defaultSwitchCheckDefault"
+                                   {{$address->is_default == 1 ? "checked":""}}
                             <label class="form-check-label" for="is_defaultSwitchCheckDefault">Varsayılan Adres
                             </label>
                         </div>

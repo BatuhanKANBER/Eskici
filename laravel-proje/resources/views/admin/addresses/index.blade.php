@@ -1,10 +1,10 @@
 @extends("admin.shared.theme")
 @section("content")
-{{--    <style>--}}
-{{--        ul {--}}
-{{--            list-style-type: none;--}}
-{{--        }--}}
-{{--    </style>--}}
+    {{--    <style>--}}
+    {{--        ul {--}}
+    {{--            list-style-type: none;--}}
+    {{--        }--}}
+    {{--    </style>--}}
 
     <div class="container-fluid pt-4 px-4">
         <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">

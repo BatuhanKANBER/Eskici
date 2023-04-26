@@ -5,11 +5,11 @@
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
                                                                                              width="150px"
-                                                                                             src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span
+                                                                                             src="{{url("ui/img/member.png")}}"><span
                         class="font-weight-bold">{{$userIn->name." ".$userIn->surname}}</span><span
                         class="text-black-50">{{$userIn->email}}</span><span> </span></div>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-7 border-right">
                 <form
                     @if(\Illuminate\Support\Facades\Auth::user()->role=="admin")
                         action="{{url("/admin/profile/$userIn->user_id")}}"
@@ -59,19 +59,19 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">Varsayılan Adres</label> <select
-                                    class="form-control" aria-label="Default select example"
-                                    name="address_id" id="address_id">
-                                    <option value="-1">Seçiniz</option>
-                                </select>
-                            </div>
-                        </div>
                         <div class="mt-5 text-center">
                             <button class="btn btn-primary profile-button" type="submit">Kaydet</button>
                         </div>
                     </div>
                 </form>
+            </div>
+            <div class="col-md-2 d-block">
+                <div class="row mt-3">
+                    <a class="btn btn-primary profile-button w-100 ml-3"
+                       type="submit">Parola Değiştir<i class="fa fa-key"></i></a></div>
+                <div class="row mt-3">
+                    <a class="btn btn-primary profile-button w-100 ml-3"
+                       type="submit">Adresleri Yönet<i class="fa fa-map-signs"></i></a></div>
             </div>
         </div>
     </div>
