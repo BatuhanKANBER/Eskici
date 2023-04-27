@@ -63,7 +63,8 @@
             </div>
             <div class="col-md-2 d-block">
                 <div class="row mt-3">
-                    <a class="btn btn-primary profile-button w-100 ml-3"
+                    <a href="{{url("/admin-in/profile/$user->user_id/password_change")}}"
+                       class="btn btn-primary profile-button w-100 ml-3"
                        type="submit">Parola Değiştir<i class="fa fa-key"></i></a></div>
                 <div class="row mt-3">
                     <a class="btn btn-primary profile-button w-100 ml-3"

@@ -14,6 +14,7 @@ use App\Http\Controllers\UI\ContactController;
 use App\Http\Controllers\UI\FaqsController;
 use App\Http\Controllers\UI\HomeController;
 use App\Http\Controllers\UI\AuthController;
+use App\Http\Controllers\UI\PasswordController;
 use App\Http\Controllers\UI\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,13 +43,15 @@ Route::get('/contact-page', [ContactController::class, "index"]);
 Route::get('/faqs-page', [FaqsController::class, "index"]);
 Route::get('/about-us', [AboutUsController::class, "index"]);
 //AUTH:USER
-Route::middleware(["auth", "role:user"])->name("user.")->group(function () {
+Route::middleware(["auth", "role:user"])->group(function () {
     Route::get("/user/my-basket", [CardController::class, 'index']);
     Route::get("/user/my-basket/add/{product}", [CardController::class, 'add']);
     Route::get("/user/my-basket/remove/{cardDetails}", [CardController::class, 'remove']);
     Route::get("/user/profile", [ProfileController::class, 'index']);
     Route::get("/user/profile/{user}/edit", [ProfileController::class, 'edit']);
     Route::post("/user/profile/{user}", [ProfileController::class, 'update']);
+    Route::get("/user/profile/{user}/password_change", [PasswordController::class, "index"]);
+    Route::post("/user/profile/{user}/password_change", [PasswordController::class, "updatePassword"]);
 });
 
 //ADMIN
@@ -65,13 +68,14 @@ Route::middleware(["auth", "role:admin"])->group(function () {
     Route::get("/admin-in/profile", [\App\Http\Controllers\Admin\ProfileController::class, 'index']);
     Route::get("/admin-in/profile/{user}/edit", [\App\Http\Controllers\Admin\ProfileController::class, 'edit']);
     Route::post("/admin-in/profile/{user}", [\App\Http\Controllers\Admin\ProfileController::class, 'update']);
-});
-//AUTH:ADMIN
-Route::middleware(["auth", "role:admin"])->group(function () {
+    Route::get("/admin-in/profile/{user}/password_change", [\App\Http\Controllers\Admin\PasswordController::class, 'index']);
+    Route::post("/admin-in/profile/{user}/password_change", [\App\Http\Controllers\Admin\PasswordController::class, 'updatePassword']);
     Route::get("/admin/my-basket", [CardController::class, 'index']);
     Route::get("/admin/my-basket/add/{product}", [CardController::class, 'add']);
     Route::get("/admin/my-basket/remove/{cardDetails}", [CardController::class, 'remove']);
     Route::get("/admin/profile", [ProfileController::class, 'index']);
     Route::get("/admin/profile/{user}/edit", [ProfileController::class, 'edit']);
     Route::post("/admin/profile/{user}", [ProfileController::class, 'update']);
+    Route::get("/admin/profile/{user}/password_change", [PasswordController::class, "index"]);
+    Route::post("/admin/profile/{user}/password_change", [PasswordController::class, 'updatePassword']);;
 });

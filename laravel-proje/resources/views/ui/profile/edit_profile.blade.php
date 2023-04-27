@@ -67,8 +67,17 @@
             </div>
             <div class="col-md-2 d-block">
                 <div class="row mt-3">
-                    <a class="btn btn-primary profile-button w-100 ml-3"
-                       type="submit">Parola Değiştir<i class="fa fa-key"></i></a></div>
+                    @if(\Illuminate\Support\Facades\Auth::user())
+                        @if(\Illuminate\Support\Facades\Auth::user()->role=="admin")
+                            <a href="{{"/admin/profile/$userIn->user_id/password_change"}}"
+                               class="btn btn-primary profile-button w-100 ml-3"
+                               type="submit">Parola Değiştir<i class="fa fa-key"></i></a>
+                        @elseif(\Illuminate\Support\Facades\Auth::user()->role=="user")
+                            <a href="{{"/user/profile/$userIn->user_id/password_change"}}" class="btn btn-primary profile-button w-100 ml-3"
+                               type="submit">Parola Değiştir<i class="fa fa-key"></i></a>
+                        @endif
+                    @endif
+                </div>
                 <div class="row mt-3">
                     <a class="btn btn-primary profile-button w-100 ml-3"
                        type="submit">Adresleri Yönet<i class="fa fa-map-signs"></i></a></div>
