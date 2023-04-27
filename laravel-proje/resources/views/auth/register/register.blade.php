@@ -51,7 +51,8 @@
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <div class="form-outline">
-                                        <input name="name" type="text" id="name" class="form-control" value="{{old("name")}}"/>
+                                        <input name="name" type="text" id="name" class="form-control"
+                                               value="{{old("name")}}"/>
                                         <label class="form-label" for="name">Ad</label>
                                     </div>
                                     @error("name")
@@ -60,7 +61,8 @@
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <div class="form-outline">
-                                        <input name="surname" type="text" id="surname" class="form-control" value="{{old("surname")}}" />
+                                        <input name="surname" type="text" id="surname" class="form-control"
+                                               value="{{old("surname")}}"/>
                                         <label class="form-label" for="surname">Soyad</label>
                                     </div>
                                     @error("surname")
@@ -69,7 +71,8 @@
                                 </div>
                             </div>
                             <div class="form-outline mb-4">
-                                <input name="phone_number" type="text" id="phone_number" class="form-control" value="{{old("phone_number")}}"/>
+                                <input name="phone_number" type="text" id="phone_number" class="form-control"
+                                       value="{{old("phone_number")}}"/>
                                 <label class="form-label" for="phone_number">Telefon Numarası</label>
                             </div>
                             @error("phone_number")
@@ -77,7 +80,8 @@
                             @enderror
                             <!-- Email input phone_number-->
                             <div class="form-outline mb-4">
-                                <input name="email" type="email" id="email" class="form-control" value="{{old("email")}}"/>
+                                <input name="email" type="email" id="email" class="form-control"
+                                       value="{{old("email")}}"/>
                                 <label class="form-label" for="email">Email Adresi</label>
                             </div>
                             @error("email")
@@ -121,6 +125,24 @@
     type="text/javascript"
     src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"
 ></script>
+<script>
+
+    var phoneInput = document.getElementById('phone_number');
+    var myForm = document.forms.myForm;
+    var result = document.getElementById('result');  // only for debugging purposes
+
+    phoneInput.addEventListener('input', function (e) {
+        var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+        e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+    });
+
+    myForm.addEventListener('submit', function (e) {
+        phoneInput.value = phoneInput.value.replace(/\D/g, '');
+        result.innerText = phoneInput.value;  // only for debugging purposes
+
+        e.preventDefault(); // You wouldn't prevent it
+    });
+</script>
 </body>
 </html>
 

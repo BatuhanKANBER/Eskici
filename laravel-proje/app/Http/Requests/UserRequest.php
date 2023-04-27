@@ -29,7 +29,7 @@ class UserRequest extends FormRequest
             "surname" => "required|sometimes|min:2",
             "email" => "required|sometimes|email|unique:App\Models\User,email,$user_id",
             "password" => "required|sometimes|string|min:6|confirmed",
-            "phone_number" => 'required|sometimes|numeric|min:10'
+            "phone_number" => 'required|sometimes'
         ];
     }
 
@@ -41,7 +41,6 @@ class UserRequest extends FormRequest
             "surname.required" => "Bu alan zorunludur.",
             "surname.min" => "Soyad alanı en az 2 karakterden oluşmalıdır.",
             "phone_number.required" => "Bu alan zorunludur.",
-            "phone_number.min" => "Bu alan numara formatına uygun olmalıdır.",
             "email.required" => "Bu alan zorunludur.",
             "email.email" => "Girdiğiniz değer eposta formatına uygun olmalıdır.",
             "email.unique" => "Girdiğiniz eposta sistemde başka bir kullanıcı tarafından kullanılıyor",
