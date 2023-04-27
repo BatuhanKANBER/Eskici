@@ -52,6 +52,12 @@ Route::middleware(["auth", "role:user"])->group(function () {
     Route::post("/user/profile/{user}", [ProfileController::class, 'update']);
     Route::get("/user/profile/{user}/password_change", [PasswordController::class, "index"]);
     Route::post("/user/profile/{user}/password_change", [PasswordController::class, "updatePassword"]);
+    Route::get("/user/profile/{user}/address", [\App\Http\Controllers\UI\AddressController::class, "index"]);
+    Route::get("/user/profile/{user}/address/{address}/edit", [\App\Http\Controllers\UI\AddressController::class, "edit"]);
+    Route::post("/user/profile/{user}/address/{address}", [\App\Http\Controllers\UI\AddressController::class, "update"]);
+    Route::delete("/user/profile/{user}/address/{address}", [\App\Http\Controllers\UI\AddressController::class, "destroy"]);
+    Route::get("/user/profile/{user}/address/create", [\App\Http\Controllers\UI\AddressController::class, "create"]);
+    Route::post("/user/profile/{user}/address", [\App\Http\Controllers\UI\AddressController::class, "store"]);
 });
 
 //ADMIN
@@ -59,7 +65,7 @@ Route::middleware(["auth", "role:admin"])->group(function () {
     Route::resource('/users', UserController::class);
     Route::get("/users/{user}/password-change", [UserController::class, "passwordForm"]);
     Route::post("/users/{user}/password-change", [UserController::class, "passwordChange"]);
-    Route::resource("/users/{user}/addresses", AddressController::class);
+    Route::resource("/users/{user}/address", AddressController::class);
     Route::resource("/categories", CategoryController::class);
     Route::resource("/products", ProductController::class);
     Route::resource("/products/{product}/images", ProductImageController::class);
@@ -77,5 +83,11 @@ Route::middleware(["auth", "role:admin"])->group(function () {
     Route::get("/admin/profile/{user}/edit", [ProfileController::class, 'edit']);
     Route::post("/admin/profile/{user}", [ProfileController::class, 'update']);
     Route::get("/admin/profile/{user}/password_change", [PasswordController::class, "index"]);
-    Route::post("/admin/profile/{user}/password_change", [PasswordController::class, 'updatePassword']);;
+    Route::post("/admin/profile/{user}/password_change", [PasswordController::class, 'updatePassword']);
+    Route::get("/admin/profile/{user}/address", [\App\Http\Controllers\UI\AddressController::class, "index"]);
+    Route::get("/admin/profile/{user}/address/{address}/edit", [\App\Http\Controllers\UI\AddressController::class, "edit"]);
+    Route::post("/admin/profile/{user}/address/{address}", [\App\Http\Controllers\UI\AddressController::class, "update"]);
+    Route::delete("/admin/profile/{user}/address/{address}", [\App\Http\Controllers\UI\AddressController::class, "destroy"]);
+    Route::get("/admin/profile/{user}/address/create", [\App\Http\Controllers\UI\AddressController::class, "create"]);
+    Route::post("/admin/profile/{user}/address", [\App\Http\Controllers\UI\AddressController::class, "store"]);
 });

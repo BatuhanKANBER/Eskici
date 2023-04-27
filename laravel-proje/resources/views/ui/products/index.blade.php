@@ -212,12 +212,12 @@
                                                 class="fas fa-eye text-primary mr-1"></i>İncele</a>
                                         @if(\Illuminate\Support\Facades\Auth::user())
                                             @if(\Illuminate\Support\Facades\Auth::user()->role=="admin")
-                                                <a href="admin/my-basket/add/{{$product->product_id}}"
+                                                <a href="/admin/my-basket/add/{{$product->product_id}}"
                                                    class="btn btn-sm text-dark p-0"><i
                                                         class="fas fa-shopping-cart text-primary mr-1"></i>Sepete
                                                     Ekle</a>
                                             @elseif(\Illuminate\Support\Facades\Auth::user()->role=="user")
-                                                <a href="user/my-basket/add/{{$product->product_id}}"
+                                                <a href="/user/my-basket/add/{{$product->product_id}}"
                                                    class="btn btn-sm text-dark p-0"><i
                                                         class="fas fa-shopping-cart text-primary mr-1"></i>Sepete
                                                     Ekle</a>

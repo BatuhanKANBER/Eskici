@@ -1,15 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\UI;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AddressRequest;
 use App\Models\Address;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
@@ -24,8 +26,9 @@ class AddressController extends Controller
 
     public function index(User $user): View
     {
+        $categories = Category::all()->where("is_active", true);
         $addrs = $user->addrs;
-        return view("admin.address.index", ["addrs" => $addrs, "user" => $user]);
+        return view("ui.address.index", ["categories" => $categories, "addrs" => $addrs, "user" => $user]);
     }
 
     /**
@@ -35,7 +38,8 @@ class AddressController extends Controller
      */
     public function create(User $user): View
     {
-        return view("admin.address.create_address", ["user" => $user]);
+        $categories = Category::all()->where("is_active", true);
+        return view("ui.address.create_address", ["categories" => $categories, "user" => $user]);
     }
 
     /**
@@ -65,7 +69,7 @@ class AddressController extends Controller
         $address->address_description = $address_description;
         $address->is_default = $is_default;
         $address->save();
-        return Redirect::to("/users/$user->user_id/address");
+        return redirect()->back();
     }
 
     /**
@@ -76,8 +80,9 @@ class AddressController extends Controller
      */
     public function edit(User $user, Address $address): View
     {
+        $categories = Category::all()->where("is_active", true);
         $addrs = $user->addrs;
-        return view("admin.address.edit_address", ["user" => $user, "address" => $address, "addrs" => $addrs]);
+        return view("ui.address.edit_address", ["categories" => $categories, "user" => $user, "address" => $address, "addrs" => $addrs]);
     }
 
     /**
@@ -105,7 +110,7 @@ class AddressController extends Controller
         $address->is_default = $is_default;
         $address->save();
 
-        return Redirect::to("/users/$user->user_id/address");
+        return redirect()->back();
     }
 
     /**
@@ -118,7 +123,7 @@ class AddressController extends Controller
     public function destroy(User $user, Address $address): RedirectResponse
     {
         $address->delete();
-        return Redirect::to("/users/$user->user_id/address");
+        return redirect()->back();
     }
 
 }

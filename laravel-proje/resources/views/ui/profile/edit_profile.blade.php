@@ -2,7 +2,7 @@
 @section("content")
     <div class="container rounded bg-white mt-5 mb-5">
         <div class="row">
-            <div class="col-md-3 border-right">
+            <div class="col-md-2 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
                                                                                              width="150px"
                                                                                              src="{{url("ui/img/member.png")}}"><span
@@ -65,7 +65,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-2 d-block">
+            <div class="col-md-2 d-block ">
                 <div class="row mt-3">
                     @if(\Illuminate\Support\Facades\Auth::user())
                         @if(\Illuminate\Support\Facades\Auth::user()->role=="admin")
@@ -73,17 +73,65 @@
                                class="btn btn-primary profile-button w-100 ml-3"
                                type="submit">Parola Değiştir<i class="fa fa-key"></i></a>
                         @elseif(\Illuminate\Support\Facades\Auth::user()->role=="user")
-                            <a href="{{"/user/profile/$userIn->user_id/password_change"}}" class="btn btn-primary profile-button w-100 ml-3"
+                            <a href="{{"/user/profile/$userIn->user_id/password_change"}}"
+                               class="btn btn-primary profile-button w-100 ml-3"
                                type="submit">Parola Değiştir<i class="fa fa-key"></i></a>
                         @endif
                     @endif
                 </div>
                 <div class="row mt-3">
-                    <a class="btn btn-primary profile-button w-100 ml-3"
-                       type="submit">Adresleri Yönet<i class="fa fa-map-signs"></i></a></div>
+                    @if(\Illuminate\Support\Facades\Auth::user())
+                        @if(\Illuminate\Support\Facades\Auth::user()->role=="admin")
+                            <a href="{{"/admin/profile/$userIn->user_id/address"}}"
+                               class="btn btn-primary profile-button w-100 ml-3"
+                               type="submit">Adreslerim<i class="fa fa-map-signs"></i></a>
+                        @elseif(\Illuminate\Support\Facades\Auth::user()->role=="user")
+                            <a href="{{"/user/profile/$userIn->user_id/address"}}"
+                               class="btn btn-primary profile-button w-100 ml-3"
+                               type="submit">Adreslerim<i class="fa fa-map-signs"></i></a>
+                        @endif
+                    @endif
+                </div>
+            </div>
+            <div class="col-md-1 d-block">
+                <div class="row mt-3">
+                    @if(\Illuminate\Support\Facades\Auth::user())
+                        @if(\Illuminate\Support\Facades\Auth::user()->role=="admin")
+                            <a href="{{"/admin/profile"}}"
+                               class="btn btn-primary profile-button ml-3"
+                               type="submit"><i
+                                    class="fa fa-arrow-left"></i>
+                            </a>
+                        @elseif(\Illuminate\Support\Facades\Auth::user()->role=="user")
+                            <a href="{{"/user/profile"}}"
+                               class="btn btn-primary profile-button ml-3"
+                               type="submit"><i
+                                    class="fa fa-arrow-left"></i>
+                            </a>
+                        @endif
+                    @endif
+                </div>
             </div>
         </div>
     </div>
+    <script>
+
+        var phoneInput = document.getElementById('phone_number');
+        var myForm = document.forms.myForm;
+        var result = document.getElementById('result');  // only for debugging purposes
+
+        phoneInput.addEventListener('input', function (e) {
+            var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        });
+
+        myForm.addEventListener('submit', function (e) {
+            phoneInput.value = phoneInput.value.replace(/\D/g, '');
+            result.innerText = phoneInput.value;  // only for debugging purposes
+
+            e.preventDefault(); // You wouldn't prevent it
+        });
+    </script>
 @endsection
 
 

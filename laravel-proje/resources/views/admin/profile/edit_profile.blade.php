@@ -67,11 +67,13 @@
                        class="btn btn-primary profile-button w-100 ml-3"
                        type="submit">Parola Değiştir<i class="fa fa-key"></i></a></div>
                 <div class="row mt-3">
-                    <a class="btn btn-primary profile-button w-100 ml-3"
-                       type="submit">Adresleri Yönet<i class="fa fa-map-signs"></i></a></div>
+                    <a href="{{url("/users/$user->user_id/address")}}"
+                       class="btn btn-primary profile-button w-100 ml-3"
+                       type="submit">Adreslerini Yönet<i
+                            class="fa fa-map-signs"></i></a>
+                </div>
             </div>
         </div>
-    </div>
 @endsection
 
 

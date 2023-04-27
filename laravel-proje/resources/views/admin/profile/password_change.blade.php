@@ -2,6 +2,7 @@
 @section("content")
     <div class="container-fluid pt-4 px-4">
         <div class="bg-secondary rounded p-4 ">
+
             <div class="row">
                 <div class="col-md-3 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img
@@ -12,6 +13,8 @@
                             class="text-secondary-50">{{$user->email}}</span><span> </span></div>
                 </div>
                 <div class="col-md-8 card-body border-right">
+                    <h4 class="mb-4">Parola Değiştir</h4>
+                    <br>
                     <form action="{{url("/admin-in/profile/$user->user_id/password_change")}}" method="POST">
                         @csrf
                         @method("POST")

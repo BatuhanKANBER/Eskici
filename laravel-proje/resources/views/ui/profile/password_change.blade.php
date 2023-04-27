@@ -65,13 +65,13 @@
             <div class="col-md-1">
                 @if(\Illuminate\Support\Facades\Auth::user())
                     @if(\Illuminate\Support\Facades\Auth::user()->role=="admin")
-                        <a href="{{"/admin/profile"}}"
+                        <a href="{{"/admin/profile/$userIn->user_id/edit"}}"
                            class="btn btn-primary profile-button"
                            type="submit"><i
                                 class="fa fa-arrow-left"></i>
                         </a>
                     @elseif(\Illuminate\Support\Facades\Auth::user()->role=="user")
-                        <a href="{{"/user/profile"}}"
+                        <a href="{{"/user/profile/$userIn->user_id/edit"}}"
                            class="btn btn-primary profile-button"
                            type="submit"><i
                                 class="fa fa-arrow-left"></i>

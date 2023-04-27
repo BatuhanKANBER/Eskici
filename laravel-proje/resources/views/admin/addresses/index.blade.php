@@ -11,9 +11,9 @@
             <div class="col-12">
                 <div class="bg-secondary rounded h-100 p-4">
                     <div class="d-flex justify-content-between ">
-                        <h4 class="mb-4">Adresler Tablosu</h4>
+                        <h4 class="mb-4">{{$user->name." ".$user->surname}}, Adresler Tablosu</h4>
                         <ul class="d-flex list-unstyled">
-                            <li><a href="{{url("/users/$user->user_id/addresses/create")}}" type="button"
+                            <li><a href="{{url("/users/$user->user_id/address/create")}}" type="button"
                                    class="btn btn-lg btn-lg-square btn-outline-success m-2"><i
                                         class="fa fa-plus" aria-hidden="true"></i></a></li>
                             <li><a href="/users" type="button"
@@ -49,12 +49,12 @@
                                             @endif
                                         </td>
                                         <td class="d-flex">
-                                            <a href="{{url("/users/$user->user_id/addresses/$address->address_id/edit")}}"
+                                            <a href="{{url("/users/$user->user_id/address/$address->address_id/edit")}}"
                                                type="button"
                                                class="btn btn-sm btn-sm-square btn-outline-warning m-2"><i
                                                     class="fa fa-pencil-square-o"></i></a>
 
-                                            <form action="{{"/users/$user->user_id/addresses/$address->address_id"}}"
+                                            <form action="{{"/users/$user->user_id/address/$address->address_id"}}"
                                                   method="POST">
                                                 @csrf
                                                 @method("DELETE")

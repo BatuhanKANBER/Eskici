@@ -53,7 +53,7 @@
                                                    class="btn btn-sm btn-sm-square btn-outline-light m-2"><i
                                                             class="fa fa-key"></i></a>
                                                 -
-                                                <a href="{{url("/users/$user->user_id/addresses")}}" type="button"
+                                                <a href="{{url("/users/$user->user_id/address")}}" type="button"
                                                    class="btn btn-sm btn-sm-square btn-outline-info m-2"><i
                                                             class="fa fa-map-signs"></i></a>
                                             </form>

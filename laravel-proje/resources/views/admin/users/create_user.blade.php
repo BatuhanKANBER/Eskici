@@ -3,7 +3,7 @@
     <div class="container-fluid pt-4 px-4">
         <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
             <div class="col-12">
-                <div class="bg-secondary rounded h-20 p-4">
+                <div class="rounded p-4">
                     <div class="d-flex justify-content-between ">
                         <h6 class="mb-4">Yeni Kullanıcı Ekle</h6>
                         <a href="/users" type="button"
@@ -45,8 +45,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Şifre</label>
-                            <input name="password" type="password" class="form-control" id="password"
-                                   autocomplete="new-password">
+                            <input name="password" type="password" class="form-control" id="password">
                             @error("password")
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -68,20 +67,24 @@
                             <input onclick="myFunction2()" type="checkbox" class="form-check-input" id="passwordCheck2">
                             <label class="form-check-label" for="passwordCheck2">Göster</label>
                         </div>
-                        <div class="form-check form-switch">
-                            <input name="role" class="form-check-input" type="checkbox" role="switch"
-                                   id="roleSwitchCheckDefault">
-                            <label class="form-check-label" for="roleSwitchCheckDefault">Yetkili Kullanıcı
-                            </label>
+                        <div class="d-flex justify-content-between">
+                            <div class="form-check form-switch d-block">
+                                <div>
+                                    <input name="role" class="form-check-input" type="checkbox" role="switch"
+                                           id="roleSwitchCheckDefault">
+                                    <label class="form-check-label" for="roleSwitchCheckDefault">Yetkili Kullanıcı
+                                    </label>
+                                </div>
+                                <div>
+                                    <input name="is_active" class="form-check-input" type="checkbox" role="switch"
+                                           id="is_activeSwitchCheckDefault">
+                                    <label class="form-check-label" for="is_activeSwitchCheckDefault">Aktif Kullanıcı
+                                    </label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-outline-danger">Kaydet</button>
                         </div>
-                        <div class="form-check form-switch">
-                            <input name="is_active" class="form-check-input" type="checkbox" role="switch"
-                                   id="is_activeSwitchCheckDefault">
-                            <label class="form-check-label" for="is_activeSwitchCheckDefault">Aktif Kullanıcı
-                            </label>
-                        </div>
-                        <br>
-                        <button type="submit" class="btn btn-outline-danger">Kaydet</button>
+
                     </form>
                 </div>
             </div>
@@ -116,7 +119,7 @@
             e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
         });
 
-        myForm.addEventListener('submit', function(e) {
+        myForm.addEventListener('submit', function (e) {
             phoneInput.value = phoneInput.value.replace(/\D/g, '');
             result.innerText = phoneInput.value;  // only for debugging purposes
 

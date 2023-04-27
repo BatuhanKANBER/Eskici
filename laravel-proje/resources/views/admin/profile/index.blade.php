@@ -39,7 +39,7 @@
                     <div class="row mt-3">
                         <div class="col-md-12"><label class="labels">Varsayılan Adres</label> <select
                                 class="form-control" aria-label="Default select example"
-                                name="address_id" id="address_id">
+                                name="address_id" id="address_id" disabled>
                                 <option value="-1">Seçiniz</option>
                             </select>
                         </div>

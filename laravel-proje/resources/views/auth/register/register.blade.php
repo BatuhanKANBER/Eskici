@@ -107,6 +107,12 @@
                             <button type="submit" class="btn btn-primary btn-block mb-4">
                                 Kaydet
                             </button>
+                            <div class="text-center">
+                                <p>Hesabın varsa:</p>
+                                <a href="/login" type="submit" class="btn btn-primary btn-block mb-4">
+                                    Giriş Yap
+                                </a>
+                            </div>
                         </form>
                     </div>
                 </div>

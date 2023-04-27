@@ -6,11 +6,11 @@
                 <div class="bg-secondary rounded h-100 p-4">
                     <div class="d-flex justify-content-between ">
                         <h6 class="mb-4">Adresi Güncelle</h6>
-                        <a href="{{url("/users/$user->user_id/addresses")}}" type="button"
+                        <a href="{{url("/users/$user->user_id/address")}}" type="button"
                            class="btn btn-lg btn-lg-square btn-outline-light m-2"><i
                                 class="fa fa-arrow-left" aria-hidden="true"></i></a>
                     </div>
-                    <form action="{{url("/users/$user->user_id/addresses/$address->address_id")}}" method="POST"
+                    <form action="{{url("/users/$user->user_id/address/$address->address_id")}}" method="POST"
                           autocomplete="off">
                         @csrf
                         @method("PUT")

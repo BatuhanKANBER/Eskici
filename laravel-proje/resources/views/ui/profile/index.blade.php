@@ -59,7 +59,7 @@
                             </a>
                         @endif
                     @endif
-                    <a href="/logout" class="btn btn-primary profile-button"
+                    <a href="/logout" class="btn btn-danger profile-button"
                        type="submit">Çıkış Yap
                     </a>
                 </div>
