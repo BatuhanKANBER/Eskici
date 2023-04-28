@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\UI\AboutUsController;
 use App\Http\Controllers\UI\CardController;
 use App\Http\Controllers\UI\ContactController;
+use App\Http\Controllers\UI\CreditCardController;
 use App\Http\Controllers\UI\FaqsController;
 use App\Http\Controllers\UI\HomeController;
 use App\Http\Controllers\UI\AuthController;
@@ -90,4 +91,5 @@ Route::middleware(["auth", "role:admin"])->group(function () {
     Route::delete("/admin/profile/{user}/address/{address}", [\App\Http\Controllers\UI\AddressController::class, "destroy"]);
     Route::get("/admin/profile/{user}/address/create", [\App\Http\Controllers\UI\AddressController::class, "create"]);
     Route::post("/admin/profile/{user}/address", [\App\Http\Controllers\UI\AddressController::class, "store"]);
+    Route::get("/admin/credit_card", [CreditCardController::class, "index"]);
 });

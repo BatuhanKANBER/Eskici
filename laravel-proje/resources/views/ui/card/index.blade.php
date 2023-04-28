@@ -87,7 +87,15 @@
                             <h5 class="font-weight-bold">Total</h5>
                             <h5 class="font-weight-bold">$160</h5>
                         </div>
-                        <button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button>
+                        @if(\Illuminate\Support\Facades\Auth::user())
+                            @if(\Illuminate\Support\Facades\Auth::user()->role=="admin")
+                                <a href="/admin/credit_card"
+                                   class="btn btn-block btn-primary my-3 py-3">Sepeti Onayla</a>
+                            @elseif(\Illuminate\Support\Facades\Auth::user()->role=="user")
+                                <a href="/user/credit_card"
+                                   class="btn btn-block btn-primary my-3 py-3">Sepeti Onayla</a>
+                            @endif
+                        @endif
                     </div>
                 </div>
             </div>
