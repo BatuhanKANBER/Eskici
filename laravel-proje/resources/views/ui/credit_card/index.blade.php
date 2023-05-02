@@ -25,7 +25,7 @@
         bottom: 20px;
     }
 
-    .card_number {
+    .card_no {
         margin-top: 40px;
         font-size: 1.5rem;
         font-weight: 700;
@@ -79,7 +79,7 @@
                 <div class="card">
                     <div class="intern">
                         <img class="visa" src="{{asset("ui/img/visa.png")}}" alt="chip">
-                        <div class="card_number">
+                        <div class="card_no">
                             <div class="number-vl">0000 0000 0000 0000</div>
                         </div>
                         <div class="card-holder d-flex">
@@ -107,15 +107,30 @@
 
             </div>
             <div class="col-md-5 border-right">
-                <form id="credit-card">
+                @if (\Session::has('success'))
+                    <div class="alert alert-success">
+
+                            <p>{!! \Session::get('success') !!}</p>
+
+                    </div>
+                @else
+                    <div class="alert alert-danger">
+                        <p>{!! \Session::get('error') !!}</p>
+                    </div>
+                @endif
+                <form    @if(\Illuminate\Support\Facades\Auth::user()->role=="admin")
+                             action="{{url("/admin/credit_card")}}"
+                         @elseif(\Illuminate\Support\Facades\Auth::user()->role=="user")
+                             action="{{url("/user/credit_card")}}"
+                         @endif method="POST">
+                    @csrf
                     <div class="row">
                         <div class="col-md-12">
-                            <label for="card_number" class="text-dark">Kart Numarası</label>
-                            <input type="text"
-                                   class="form-control" name="card_number" id="card_number" maxlength="19"
+                            <label for="card_no" class="text-dark">Kart Numarası</label>
+                            <input type="number"
+                                   class="form-control" id="card_no" name="card_no" maxlength="19"
                                    placeholder="0000 0000 0000 0000"
-                                   required
-                                   onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                   required>
                         </div>
                     </div>
                     <div class="row">
@@ -140,7 +155,8 @@
                         <div class="col-md-6 d-flex">
                             <div class="col-md-6">
                                 <label class="text-dark" for="month">Ay</label>
-                                <input type="text"
+                                <input type="number"
+                                       max="12"
                                        class="form-control" name="month" id="month" maxlength="2"
                                        placeholder="AA"
                                        required
@@ -148,9 +164,10 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="text-dark" for="year">Yıl</label>
-                                <input type="text"
+                                <input type="number"
                                        class="form-control" name="year" id="year" maxlength="2"
                                        placeholder="YY"
+                                       min="2022"
                                        required
                                        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                             </div>
@@ -164,7 +181,9 @@
                                    onkeypress="return event.charCode >=48 && event.charCode <= 57">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary" value="ADD" id="add">ÖDEMEYİ TAMAMLA</button>
+                    <div class="mt-5 text-center">
+                        <button class="btn btn-primary profile-button" type="submit">Ödemeyi Tamamla</button>
+                    </div>
                 </form>
             </div>
             <div class="col-md-1">
@@ -188,7 +207,7 @@
     </div>
     <script>
         const form = document.querySelector("#credit-card");
-        const cardNumber = document.querySelector("#card_number");
+        const cardNumber = document.querySelector("#card_no");
         const cardName = document.querySelector("#name");
         const cardSurname = document.querySelector("#surname");
         const cardMonth = document.querySelector("#month");
@@ -203,19 +222,19 @@
 
         cardNumber.addEventListener("keyup", (e) => {
             if (!e.target.value) {
-                cardNumberText.innerText = "1234 5678 9101 1121";
+                cardNumberText.innerText = "0000000000000000";
             } else {
                 const valuesOfInput = e.target.value.replaceAll(" ", "");
 
                 if (e.target.value.length > 14) {
-                    e.target.value = valuesOfInput.replace(/(\d{4})(\d{4})(\d{4})(\d{0,4})/, "$1 $2 $3 $4");
-                    cardNumberText.innerHTML = valuesOfInput.replace(/(\d{4})(\d{4})(\d{4})(\d{0,4})/, "$1 $2 $3 $4");
+                    e.target.value = valuesOfInput.replace(/(\d{4})(\d{4})(\d{4})(\d{0,4})/, "$1$2$3$4");
+                    cardNumberText.innerHTML = valuesOfInput.replace(/(\d{4})(\d{4})(\d{4})(\d{0,4})/, "$1$2$3$4");
                 } else if (e.target.value.length > 9) {
-                    e.target.value = valuesOfInput.replace(/(\d{4})(\d{4})(\d{0,4})/, "$1 $2 $3");
-                    cardNumberText.innerHTML = valuesOfInput.replace(/(\d{4})(\d{4})(\d{0,4})/, "$1 $2 $3");
+                    e.target.value = valuesOfInput.replace(/(\d{4})(\d{4})(\d{0,4})/, "$1$2$3");
+                    cardNumberText.innerHTML = valuesOfInput.replace(/(\d{4})(\d{4})(\d{0,4})/, "$1$2$3");
                 } else if (e.target.value.length > 4) {
-                    e.target.value = valuesOfInput.replace(/(\d{4})(\d{0,4})/, "$1 $2");
-                    cardNumberText.innerHTML = valuesOfInput.replace(/(\d{4})(\d{0,4})/, "$1 $2");
+                    e.target.value = valuesOfInput.replace(/(\d{4})(\d{0,4})/, "$1$2");
+                    cardNumberText.innerHTML = valuesOfInput.replace(/(\d{4})(\d{0,4})/, "$1$2");
                 } else {
                     cardNumberText.innerHTML = valuesOfInput
                 }

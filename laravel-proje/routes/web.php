@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\UI\AboutUsController;
 use App\Http\Controllers\UI\CardController;
+use App\Http\Controllers\UI\CheckOutController;
 use App\Http\Controllers\UI\ContactController;
 use App\Http\Controllers\UI\CreditCardController;
 use App\Http\Controllers\UI\FaqsController;
@@ -59,6 +60,8 @@ Route::middleware(["auth", "role:user"])->group(function () {
     Route::delete("/user/profile/{user}/address/{address}", [\App\Http\Controllers\UI\AddressController::class, "destroy"]);
     Route::get("/user/profile/{user}/address/create", [\App\Http\Controllers\UI\AddressController::class, "create"]);
     Route::post("/user/profile/{user}/address", [\App\Http\Controllers\UI\AddressController::class, "store"]);
+    Route::get("/user/credit_card", [CheckOutController::class, "index"]);
+    Route::post("/user/credit_card", [CheckOutController::class, "checkOut"]);
 });
 
 //ADMIN
@@ -91,5 +94,6 @@ Route::middleware(["auth", "role:admin"])->group(function () {
     Route::delete("/admin/profile/{user}/address/{address}", [\App\Http\Controllers\UI\AddressController::class, "destroy"]);
     Route::get("/admin/profile/{user}/address/create", [\App\Http\Controllers\UI\AddressController::class, "create"]);
     Route::post("/admin/profile/{user}/address", [\App\Http\Controllers\UI\AddressController::class, "store"]);
-    Route::get("/admin/credit_card", [CreditCardController::class, "index"]);
+    Route::get("/admin/credit_card", [CheckOutController::class, "index"]);
+    Route::post("/admin/credit_card", [CheckOutController::class, "checkOut"]);
 });
