@@ -62,6 +62,7 @@ Route::middleware(["auth", "role:user"])->group(function () {
     Route::post("/user/profile/{user}/address", [\App\Http\Controllers\UI\AddressController::class, "store"]);
     Route::get("/user/credit_card", [CheckOutController::class, "index"]);
     Route::post("/user/credit_card", [CheckOutController::class, "checkOut"]);
+    Route::get("/user/product_detail/{product}", [\App\Http\Controllers\UI\ProductController::class, "productDetails"]);
 });
 
 //ADMIN
@@ -96,4 +97,5 @@ Route::middleware(["auth", "role:admin"])->group(function () {
     Route::post("/admin/profile/{user}/address", [\App\Http\Controllers\UI\AddressController::class, "store"]);
     Route::get("/admin/credit_card", [CheckOutController::class, "index"]);
     Route::post("/admin/credit_card", [CheckOutController::class, "checkOut"]);
+    Route::get("/admin/product_detail/{product}", [\App\Http\Controllers\UI\ProductController::class, "productDetails"]);
 });

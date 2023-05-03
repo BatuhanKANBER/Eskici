@@ -189,11 +189,11 @@
                                     <div
                                         class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                                         @if(count($product->images)>0)
-                                            <img width="400px" height="500px" class="img-fluid w-100"
+                                            <img class="w-100" height="300"
                                                  src="{{asset("/storage/products/".$product->images[0]->image_url)}}"
                                                  alt="{{"/storage/products/".$product->images[0]->alt}}">
                                         @else
-                                            <img width="500px" height="500px" class="img-fluid w-100"
+                                            <img height="500px" class="img-fluid w-100"
                                                  src="{{asset('ui/img/no-image-avaliable.png')}}"
                                                  alt="no image">
                                         @endif
@@ -208,8 +208,20 @@
                                         </div>
                                     </div>
                                     <div class="card-footer d-flex justify-content-between bg-light border">
-                                        <a href="" class="btn btn-sm text-dark p-0"><i
-                                                class="fas fa-eye text-primary mr-1"></i>İncele</a>
+                                        @if(\Illuminate\Support\Facades\Auth::user())
+                                            @if(\Illuminate\Support\Facades\Auth::user()->role=="admin")
+                                                <a href="/admin/product_detail/{{$product->product_id}}"
+                                                   class="btn btn-sm text-dark p-0"><i
+                                                        class="fas fa-eye text-primary mr-1"></i>İncele</a>
+                                            @elseif(\Illuminate\Support\Facades\Auth::user()->role=="user")
+                                                <a href="/user/product_detail/{{$product->product_id}}"
+                                                   class="btn btn-sm text-dark p-0"><i
+                                                        class="fas fa-eye text-primary mr-1"></i>İncele</a>
+                                            @endif
+                                        @else
+                                            <a href="/login" class="btn btn-sm text-dark p-0"><i
+                                                    class="fas fa-eye text-primary mr-1"></i>İncele</a>
+                                        @endif
                                         @if(\Illuminate\Support\Facades\Auth::user())
                                             @if(\Illuminate\Support\Facades\Auth::user()->role=="admin")
                                                 <a href="/admin/my-basket/add/{{$product->product_id}}"
@@ -228,7 +240,6 @@
                                                     class="fas fa-shopping-cart text-primary mr-1"></i>Sepete
                                                 Ekle</a>
                                         @endif
-
                                     </div>
                                 </div>
                             </div>

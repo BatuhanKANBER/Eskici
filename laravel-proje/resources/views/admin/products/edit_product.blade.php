@@ -50,7 +50,7 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="lead" class="form-label">Satıcı</label>
+                            <label for="lead" class="form-label">Kısa Açıklama</label>
                             <input name="lead" type="text" class="form-control" id="lead"
                                    value="{{old("lead",$product->lead)}}">
                             @error("lead")

@@ -45,7 +45,7 @@
                     <h5 class="font-weight-semi-bold mb-3">İletişim Bilgileri</h5>
                     <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Umuttepe, İzmit, Kocaeli</p>
                     <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@eskici.com</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>+090 - (555) 555 55 55</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>+90 - (555) 555 55 55</p>
                 </div>
             </div>
         </div>

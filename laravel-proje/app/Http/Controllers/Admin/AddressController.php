@@ -25,7 +25,7 @@ class AddressController extends Controller
     public function index(User $user): View
     {
         $addrs = $user->addrs;
-        return view("admin.address.index", ["addrs" => $addrs, "user" => $user]);
+        return view("admin.addresses.index", ["addrs" => $addrs, "user" => $user]);
     }
 
     /**
@@ -35,7 +35,7 @@ class AddressController extends Controller
      */
     public function create(User $user): View
     {
-        return view("admin.address.create_address", ["user" => $user]);
+        return view("admin.addresses.create_address", ["user" => $user]);
     }
 
     /**
@@ -77,7 +77,7 @@ class AddressController extends Controller
     public function edit(User $user, Address $address): View
     {
         $addrs = $user->addrs;
-        return view("admin.address.edit_address", ["user" => $user, "address" => $address, "addrs" => $addrs]);
+        return view("admin.addresses.edit_address", ["user" => $user, "address" => $address, "addrs" => $addrs]);
     }
 
     /**

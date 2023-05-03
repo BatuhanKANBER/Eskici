@@ -9,7 +9,7 @@
                 mağazamızda topladık. Antika yolculuğunda hikayesi olan ürünleri seçiyor ve sizlere sunuyoruz.</p>
             <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Umuttepe, İzmit, Kocaeli</p>
             <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@eskici.com</p>
-            <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+090 - (555) 555 55 55</p>
+            <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+90 - (555) 555 55 55</p>
         </div>
         <div class="col-lg-8 col-md-12">
             <div class="row">
@@ -58,7 +58,7 @@
                 &copy; <a class="text-dark font-weight-semi-bold" href="#">Eskici</a>. All Rights Reserved.
                 Designed
                 by
-                <a class="text-dark font-weight-semi-bold" href="#">Batuhan KANBER</a>
+                <a class="text-dark font-weight-semi-bold" href="https://github.com/BatuhanKanber">Batuhan KANBER</a>
             </p>
         </div>
         <div class="col-md-6 px-xl-0 text-center text-md-right">
