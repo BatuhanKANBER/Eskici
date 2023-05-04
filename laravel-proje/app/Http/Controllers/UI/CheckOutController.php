@@ -6,12 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreditCardRequest;
 use App\Models\Card;
 use App\Models\Category;
+use App\Models\Invoice;
+use App\Models\Order;
 use App\Models\User;
-use http\Message;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Iyzipay\Model\Address;
@@ -134,6 +134,11 @@ class CheckOutController extends Controller
         if ($payment->getStatus() == "success") {
             $card->is_active = false;
             $card->save();
+
+            // Sipariş oluştur
+            $order = $this->createOrderWithDetails($card);
+            $this->createInvoiceWithDetails($order);
+
             return redirect()->back()->with('success', 'Tebrikler Ödemeniz Başarıyla Alınmıştır.');
         } else {
             return redirect()->back()->with('error', 'Ödeme Alınamadı.');
@@ -187,5 +192,43 @@ class CheckOutController extends Controller
         }
 
         return $basketItems;
+    }
+
+    private function createOrderWithDetails(Card $card): Order
+    {
+        $order = new Order([
+            "card_id" => $card->card_id,
+            "code" => $card->code
+        ]);
+        $order->save();
+
+        foreach ($card->details as $detail) {
+            $order->details()->create([
+                'order_id' => $order->order_id,
+                'product_id' => $detail->product_id,
+                'quantity' => $detail->quantity
+            ]);
+        }
+
+        return $order;
+    }
+
+    private function createInvoiceWithDetails(Order $order)
+    {
+        $invoice = new Invoice([
+            "order_id" => $order->order_id,
+            "code" => $order->code
+        ]);
+        $invoice->save();
+
+        foreach ($order->details as $detail) {
+            $invoice->details()->create([
+                'invoice_id' => $invoice->invoice_id,
+                'product_id' => $detail->product_id,
+                'quantity' => $detail->quantity,
+                'unit_price' => $detail->product->price,
+                'total' => ($detail->quantity * $detail->product->price),
+            ]);
+        }
     }
 }
