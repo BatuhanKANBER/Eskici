@@ -20,10 +20,16 @@ class CardController extends Controller
 {
     public function index(): View
     {
+
         $card = $this->getOrCreateCart();
         $categories = Category::all()->where("is_active", true);
+        $cardDetails = $card->details;
+        $subTotal = 0;
+        foreach ($cardDetails as $detail) {
+            $subTotal += $detail->product->price * $detail->quantity;
+        }
         $user = new User();
-        return view("ui.card.index", ["card" => $card, "categories" => $categories, "user" => $user]);
+        return view("ui.card.index", ["card" => $card, "categories" => $categories, "user" => $user, "subTotal" => $subTotal]);
     }
 
     /**
@@ -36,7 +42,7 @@ class CardController extends Controller
     {
         $user = Auth::user();
         $card = Card::firstOrCreate(
-            ['user_id' => $user->user_id],
+            ['user_id' => $user->user_id, 'is_active' => true],
             ['code' => Str::random(8)]
         );
         return $card;
@@ -52,10 +58,8 @@ class CardController extends Controller
     public function add(Product $product, int $quantity = 1): RedirectResponse
     {
         $card = $this->getOrCreateCart();
-        $card->details()->create([
-            "product_id" => $product->product_id,
-            "quantity" => $quantity,
-        ]);
+        $card->details()->create(["product_id" => $product->product_id,
+            "quantity" => $quantity,]);
         return back();
     }
 
@@ -66,7 +70,8 @@ class CardController extends Controller
      * @param CardDetails $cardDetails
      * @return RedirectResponse
      */
-    public function remove(CardDetails $cardDetails): RedirectResponse
+    public
+    function remove(CardDetails $cardDetails): RedirectResponse
     {
         $cardDetails->delete();
         return back();

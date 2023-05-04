@@ -109,13 +109,12 @@
             <div class="col-md-5 border-right">
                 @if (\Session::has('success'))
                     <div class="alert alert-success">
-
                             <p>{!! \Session::get('success') !!}</p>
-
                     </div>
-                @else
+                @elseif(\Session::has('error'))
                     <div class="alert alert-danger">
                         <p>{!! \Session::get('error') !!}</p>
+                        <p>Hatalı kart bilgisi.</p>
                     </div>
                 @endif
                 <form    @if(\Illuminate\Support\Facades\Auth::user()->role=="admin")
@@ -127,8 +126,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label for="card_no" class="text-dark">Kart Numarası</label>
-                            <input type="number"
-                                   class="form-control" id="card_no" name="card_no" maxlength="19"
+                            <input type="text"
+                                   class="form-control" id="card_no" name="card_no" maxlength="16"
                                    placeholder="0000 0000 0000 0000"
                                    required>
                         </div>
@@ -206,8 +205,10 @@
         </div>
     </div>
     <script>
+        $(function () {
+            $('#card_no').mask("9999999999999999");
+        });
         const form = document.querySelector("#credit-card");
-        const cardNumber = document.querySelector("#card_no");
         const cardName = document.querySelector("#name");
         const cardSurname = document.querySelector("#surname");
         const cardMonth = document.querySelector("#month");
@@ -220,26 +221,6 @@
         const cardYearText = document.querySelector(".year-vl");
         const cardCVVText = document.querySelector(".cvv-vl");
 
-        cardNumber.addEventListener("keyup", (e) => {
-            if (!e.target.value) {
-                cardNumberText.innerText = "0000000000000000";
-            } else {
-                const valuesOfInput = e.target.value.replaceAll(" ", "");
-
-                if (e.target.value.length > 14) {
-                    e.target.value = valuesOfInput.replace(/(\d{4})(\d{4})(\d{4})(\d{0,4})/, "$1$2$3$4");
-                    cardNumberText.innerHTML = valuesOfInput.replace(/(\d{4})(\d{4})(\d{4})(\d{0,4})/, "$1$2$3$4");
-                } else if (e.target.value.length > 9) {
-                    e.target.value = valuesOfInput.replace(/(\d{4})(\d{4})(\d{0,4})/, "$1$2$3");
-                    cardNumberText.innerHTML = valuesOfInput.replace(/(\d{4})(\d{4})(\d{0,4})/, "$1$2$3");
-                } else if (e.target.value.length > 4) {
-                    e.target.value = valuesOfInput.replace(/(\d{4})(\d{0,4})/, "$1$2");
-                    cardNumberText.innerHTML = valuesOfInput.replace(/(\d{4})(\d{0,4})/, "$1$2");
-                } else {
-                    cardNumberText.innerHTML = valuesOfInput
-                }
-            }
-        })
 
         cardName.addEventListener("keyup", (e) => {
             if (!e.target.value) {

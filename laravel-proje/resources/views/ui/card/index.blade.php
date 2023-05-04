@@ -11,7 +11,6 @@
                         <th>Ürün Ad</th>
                         <th>Fiyat</th>
                         <th>Adet</th>
-                        <th>Toplam</th>
                         <th>Remove</th>
                     </tr>
                     </thead>
@@ -43,7 +42,6 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="align-middle">{{($detail->price*$detail->quantity)}}</td>
                                 <td class="align-middle">
                                     <a href="my-basket/remove/{{$detail->card_detail_id}}">Sepetten Sil</a>
                                 </td>
@@ -64,7 +62,7 @@
                     <div class="input-group">
                         <input type="text" class="form-control p-4" placeholder="Coupon Code">
                         <div class="input-group-append">
-                            <button class="btn btn-primary">Apply Coupon</button>
+                            <button class="btn btn-primary">Kupon Uygula</button>
                         </div>
                     </div>
                 </form>
@@ -74,18 +72,20 @@
                     </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-3 pt-1">
-                            <h6 class="font-weight-medium">Subtotal</h6>
-                            <h6 class="font-weight-medium">$150</h6>
+                            <h6 class="font-weight-medium">Aratoplam</h6>
+                            <h6 class="font-weight-medium">
+                                {{$subTotal}} &#8378;</h6>
                         </div>
                         <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-medium">Shipping</h6>
-                            <h6 class="font-weight-medium">$10</h6>
+                            <h6 class="font-weight-medium">KDV(%8)</h6>
+                            <h6 class="font-weight-medium">
+                                {{$subTotal*8/100}} &#8378;</h6>
                         </div>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
                         <div class="d-flex justify-content-between mt-2">
-                            <h5 class="font-weight-bold">Total</h5>
-                            <h5 class="font-weight-bold">$160</h5>
+                            <h5 class="font-weight-bold">Toplam</h5>
+                            <h5 class="font-weight-bold"> {{$subTotal+($subTotal*8/100)}}&#8378;</h5>
                         </div>
                         @if(\Illuminate\Support\Facades\Auth::user())
                             @if(\Illuminate\Support\Facades\Auth::user()->role=="admin")

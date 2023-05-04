@@ -15,7 +15,8 @@ class Card extends Model
     protected $fillable = [
         "card_id",
         "user_id",
-        "code"
+        "code",
+        "is_active"
     ];
 
     public function details()

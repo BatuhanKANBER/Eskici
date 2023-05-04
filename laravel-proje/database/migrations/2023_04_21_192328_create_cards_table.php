@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id("card_id");
             $table->foreignIdFor(User::class,"user_id");
             $table->string("code");
+            $table->boolean("is_active");
             $table->softDeletes();
             $table->timestamps();
         });

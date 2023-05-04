@@ -14,7 +14,7 @@
                                      alt="{{"/storage/products/".$product->images[0]->alt}}">
                             </div>
                             @foreach($product->images as $image)
-                                <div class="carousel-item ">
+                                <div class="carousel-item">
                                     <img class="w-100"
                                          height="500"
                                          src="{{asset("/storage/products/".$image->image_url)}}"
@@ -53,7 +53,7 @@
                                 <i class="fa fa-minus"></i>
                             </button>
                         </div>
-                        <input type="text" class="form-control bg-secondary text-center" value="1">
+                        <input name="quantity" id="quantity" type="text" class="form-control bg-secondary text-center" value="1">
                         <div class="input-group-btn">
                             <button class="btn btn-primary btn-plus">
                                 <i class="fa fa-plus"></i>

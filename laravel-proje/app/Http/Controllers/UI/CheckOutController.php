@@ -64,7 +64,7 @@ class CheckOutController extends Controller
         //ÖDEME İSTEĞİ
         $request = new CreatePaymentRequest();
         $request->setLocale(\Iyzipay\Model\Locale::TR);
-        $request->setConversationId($card->card_id);
+        $request->setConversationId($card->code);
         $request->setPrice($total);
         $request->setPaidPrice($total);
         $request->setCurrency(Currency::TL);
@@ -132,6 +132,8 @@ class CheckOutController extends Controller
         $payment = Payment::create($request, $options);
 
         if ($payment->getStatus() == "success") {
+            $card->is_active = false;
+            $card->save();
             return redirect()->back()->with('success', 'Tebrikler Ödemeniz Başarıyla Alınmıştır.');
         } else {
             return redirect()->back()->with('error', 'Ödeme Alınamadı.');
@@ -142,7 +144,7 @@ class CheckOutController extends Controller
     {
         $user = Auth::user();
         $card = Card::firstOrCreate(
-            ['user_id' => $user->user_id],
+            ['user_id' => $user->user_id, 'is_active' => true],
             ['code' => Str::random(8)]
         );
         return $card;
