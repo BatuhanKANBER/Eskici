@@ -77,7 +77,9 @@ Route::middleware(["auth", "role:admin"])->group(function () {
     Route::resource("/products/{product}/images", ProductImageController::class);
     Route::resource("/categories/{category}/category_images", CategoryImageController::class);
     Route::resource("/faqs", FaqController::class);
-    Route::get("/orders", [OrderController::class,'index']);
+    Route::get("/orders", [OrderController::class, 'index']);
+    Route::get('/order_details/{id}', [OrderController::class, "orderView"]);
+    Route::put("/update_status/{id}", [OrderController::class, 'update_status']);
     Route::get("/admin-in/profile", [\App\Http\Controllers\Admin\ProfileController::class, 'index']);
     Route::get("/admin-in/profile/{user}/edit", [\App\Http\Controllers\Admin\ProfileController::class, 'edit']);
     Route::post("/admin-in/profile/{user}", [\App\Http\Controllers\Admin\ProfileController::class, 'update']);

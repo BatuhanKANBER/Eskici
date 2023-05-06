@@ -20,7 +20,6 @@
                             @if(count($orders)>0)
                                 @foreach($orders as $order)
                                     <tr>
-
                                         <td>
                                             {{$order->code}}
                                         </td>
@@ -34,21 +33,13 @@
                                             @endif
                                         </td>
                                         <td>
-                                            @if(\Illuminate\Support\Facades\Auth::user())
-                                                @if(\Illuminate\Support\Facades\Auth::user()->role=="admin")
-                                                    <a href="" type="button"
-                                                       class="btn btn-sm btn-sm-square btn-outline-light m-2"><i
-                                                            class="fa fa-eye"></i></a>
-                                                @elseif(\Illuminate\Support\Facades\Auth::user()->role=="user")
-                                                    <a href="" type="button"
-                                                       class="btn btn-sm btn-sm-square btn-outline-light m-2"><i
-                                                            class="fa fa-eye"></i></a>
-                                                @endif
-                                            @endif
+                                            <a href="{{"/order_details/$order->order_id"}}" type="button"
+                                               class="btn btn-sm btn-sm-square btn-outline-warning m-2"><i
+                                                    class="fa fa-edit"></i></a>
                                             -
-                                                <a href="" type="button"
-                                                   class="btn btn-sm btn-sm-square btn-outline-danger m-2"><i
-                                                        class="fa fa-ban"></i></a>
+                                            <a href="" type="button"
+                                               class="btn btn-sm btn-sm-square btn-outline-danger m-2"><i
+                                                    class="fa fa-ban"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
