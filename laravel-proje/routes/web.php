@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AddressController;
 use App\Http\Controllers\Admin\CategoryImageController;
 use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\UserController;
@@ -76,6 +77,7 @@ Route::middleware(["auth", "role:admin"])->group(function () {
     Route::resource("/products/{product}/images", ProductImageController::class);
     Route::resource("/categories/{category}/category_images", CategoryImageController::class);
     Route::resource("/faqs", FaqController::class);
+    Route::get("/orders", [OrderController::class,'index']);
     Route::get("/admin-in/profile", [\App\Http\Controllers\Admin\ProfileController::class, 'index']);
     Route::get("/admin-in/profile/{user}/edit", [\App\Http\Controllers\Admin\ProfileController::class, 'edit']);
     Route::post("/admin-in/profile/{user}", [\App\Http\Controllers\Admin\ProfileController::class, 'update']);
