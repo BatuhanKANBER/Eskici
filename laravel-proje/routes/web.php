@@ -3,7 +3,6 @@
 use App\Http\Controllers\Admin\AddressController;
 use App\Http\Controllers\Admin\CategoryImageController;
 use App\Http\Controllers\Admin\FaqController;
-use App\Http\Controllers\Admin\NotFoundController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\UserController;
@@ -12,7 +11,6 @@ use App\Http\Controllers\UI\AboutUsController;
 use App\Http\Controllers\UI\CardController;
 use App\Http\Controllers\UI\CheckOutController;
 use App\Http\Controllers\UI\ContactController;
-use App\Http\Controllers\UI\CreditCardController;
 use App\Http\Controllers\UI\FaqsController;
 use App\Http\Controllers\UI\HomeController;
 use App\Http\Controllers\UI\AuthController;
@@ -63,6 +61,8 @@ Route::middleware(["auth", "role:user"])->group(function () {
     Route::get("/user/credit_card", [CheckOutController::class, "index"]);
     Route::post("/user/credit_card", [CheckOutController::class, "checkOut"]);
     Route::get("/user/product_detail/{product}", [\App\Http\Controllers\UI\ProductController::class, "productDetails"]);
+    Route::get("/user/my-orders", [ProfileController::class, "myOrders"]);
+    Route::get("/user/order/{id}", [ProfileController::class, "orderView"]);
 });
 
 //ADMIN
@@ -98,4 +98,6 @@ Route::middleware(["auth", "role:admin"])->group(function () {
     Route::get("/admin/credit_card", [CheckOutController::class, "index"]);
     Route::post("/admin/credit_card", [CheckOutController::class, "checkOut"]);
     Route::get("/admin/product_detail/{product}", [\App\Http\Controllers\UI\ProductController::class, "productDetails"]);
+    Route::get("/admin/my-orders", [ProfileController::class, "myOrders"]);
+    Route::get("/admin/order/{id}", [ProfileController::class, "orderView"]);
 });

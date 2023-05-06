@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\UI\CardController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -13,9 +14,10 @@ class Order extends Model
     protected $primaryKey = "order_id";
 
     protected $fillable = [
+        "user_id",
         "order_id",
-        "card_id",
-        "code"
+        "code",
+        "status"
     ];
 
     public function details()

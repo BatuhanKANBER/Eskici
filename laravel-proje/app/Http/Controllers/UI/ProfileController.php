@@ -5,6 +5,7 @@ namespace App\Http\Controllers\UI;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -45,5 +46,21 @@ class ProfileController extends Controller
 
         $user->save();
         return redirect()->back();
+    }
+
+    public function myOrders()
+    {
+        $user = Auth::user();
+        $categories = Category::all()->where("is_active", true);
+        $orders = Order::where("user_id", $user->user_id)->get();
+        return \view("ui.order.index", ["orders" => $orders, "categories" => $categories, "user" => $user]);
+    }
+
+    public function orderView($id)
+    {
+        $user = Auth::user();
+        $categories = Category::all()->where("is_active", true);
+        $orders = Order::where('order_id', $id)->where('user_id', Auth::id())->first();
+        return view("ui.order.order_details", compact('orders', 'user', 'categories'));
     }
 }

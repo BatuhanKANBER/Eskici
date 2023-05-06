@@ -8,11 +8,13 @@ use App\Models\Card;
 use App\Models\Category;
 use App\Models\Invoice;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rules\In;
 use Illuminate\View\View;
 use Iyzipay\Model\Address;
 use Iyzipay\Model\BasketItem;
@@ -32,7 +34,7 @@ class CheckOutController extends Controller
     public function index(): View
     {
         $categories = Category::all()->where("is_active", true);
-        $user = new User();
+        $user = Auth::user();
         return view("ui.credit_card.index", ["categories" => $categories, "user" => $user]);
     }
 
@@ -135,7 +137,6 @@ class CheckOutController extends Controller
             $card->is_active = false;
             $card->save();
 
-            // Sipariş oluştur
             $order = $this->createOrderWithDetails($card);
             $this->createInvoiceWithDetails($order);
 
@@ -196,9 +197,11 @@ class CheckOutController extends Controller
 
     private function createOrderWithDetails(Card $card): Order
     {
+        $user = Auth::user();
         $order = new Order([
-            "card_id" => $card->card_id,
-            "code" => $card->code
+            "user_id" => $user->user_id,
+            "code" => $card->code,
+            "status" => "Hazırlanıyor"
         ]);
         $order->save();
 
@@ -232,3 +235,4 @@ class CheckOutController extends Controller
         }
     }
 }
+

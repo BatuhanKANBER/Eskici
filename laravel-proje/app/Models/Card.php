@@ -23,4 +23,6 @@ class Card extends Model
     {
         return $this->hasMany(CardDetails::class, "card_id", "card_id");
     }
+
+
 }

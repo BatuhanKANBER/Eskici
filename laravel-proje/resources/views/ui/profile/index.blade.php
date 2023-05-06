@@ -48,24 +48,40 @@
             </div>
             <div class="col-md-2">
                 <div class="mt-5 text-center">
-                    @if(\Illuminate\Support\Facades\Auth::user())
-                        @if(\Illuminate\Support\Facades\Auth::user()->role=="admin")
-                            <a href="{{"/admin/profile/$user->user_id/edit"}}" class="btn btn-primary profile-button"
-                               type="submit"><i class="fa fa-edit"></i>
-                            </a>
-                        @elseif(\Illuminate\Support\Facades\Auth::user()->role=="user")
-                            <a href="{{"/user/profile/$user->user_id/edit"}}" class="btn btn-primary profile-button"
-                               type="submit"><i class="fa fa-edit"></i>
-                            </a>
+                    <div class="row m-1">
+                        @if(\Illuminate\Support\Facades\Auth::user())
+                            @if(\Illuminate\Support\Facades\Auth::user()->role=="admin")
+                                <a href="{{"/admin/my-orders"}}" class="btn btn-primary profile-button w-100"
+                                   type="submit"><i class="fa fa-archive"></i> Siparişlerim
+                                </a>
+                            @elseif(\Illuminate\Support\Facades\Auth::user()->role=="user")
+                                <a href="{{"/user/my-orders"}}" class="btn btn-primary profile-button w-100"
+                                   type="submit"><i class="fa fa-archive"></i> Siparişlerim
+                                </a>
+                            @endif
                         @endif
-                    @endif
-                    <a href="/logout" class="btn btn-danger profile-button"
-                       type="submit">Çıkış Yap
-                    </a>
+                    </div>
+                    <div class="row m-1">
+                        @if(\Illuminate\Support\Facades\Auth::user())
+                            @if(\Illuminate\Support\Facades\Auth::user()->role=="admin")
+                                <a href="{{"/admin/profile/$user->user_id/edit"}}"
+                                   class="btn btn-primary profile-button w-100"
+                                   type="submit"><i class="fa fa-edit"></i> Güncelle
+                                </a>
+                            @elseif(\Illuminate\Support\Facades\Auth::user()->role=="user")
+                                <a href="{{"/user/profile/$user->user_id/edit"}}" class="btn btn-primary profile-button w-100"
+                                   type="submit"><i class="fa fa-edit"></i> Güncelle
+                                </a>
+                            @endif
+                        @endif
+                    </div>
+                    <div class="row m-1">
+                        <a href="/logout" class="btn btn-danger profile-button w-100"
+                           type="submit">Çıkış Yap
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
     </div>
 @endsection

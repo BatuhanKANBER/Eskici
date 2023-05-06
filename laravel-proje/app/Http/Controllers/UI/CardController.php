@@ -8,11 +8,8 @@ use App\Models\CardDetails;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
-use http\Client\Request;
-use http\Env\Response;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
@@ -21,7 +18,7 @@ class CardController extends Controller
     public function index(): View
     {
 
-        $card = $this->getOrCreateCart();
+        $card = $this->getOrCreateCard();
         $categories = Category::all()->where("is_active", true);
         $cardDetails = $card->details;
         $subTotal = 0;
@@ -38,7 +35,7 @@ class CardController extends Controller
      *
      * @return Card
      */
-    private function getOrCreateCart(): Card
+    private function getOrCreateCard(): Card
     {
         $user = Auth::user();
         $card = Card::firstOrCreate(
@@ -57,7 +54,7 @@ class CardController extends Controller
      */
     public function add(Product $product, int $quantity = 1): RedirectResponse
     {
-        $card = $this->getOrCreateCart();
+        $card = $this->getOrCreateCard();
         $card->details()->create(["product_id" => $product->product_id,
             "quantity" => $quantity,]);
         return back();

@@ -25,7 +25,7 @@
                                         alt="{{$detail->product->images[0]->alt}}" width="100">
                                 </td>
                                 <td class="align-middle">{{ $detail->product->name }}</td>
-                                <td class="align-middle">{{ $detail->product->price }}</td>
+                                <td class="align-middle">{{ $detail->product->price }}&#8378;</td>
                                 <td class="align-middle">
                                     <div class="input-group quantity mx-auto" style="width: 100px;">
                                         <div class="input-group-btn">
