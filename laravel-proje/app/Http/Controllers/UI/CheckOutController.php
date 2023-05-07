@@ -102,6 +102,7 @@ class CheckOutController extends Controller
         $buyer->setZipCode("34950");
         $request->setBuyer($buyer);
 
+
         //KARGO ADRESİ
         $shippingAddress = new Address();
         $shippingAddress->setContactName($user->name);

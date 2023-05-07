@@ -21,7 +21,8 @@ class Product extends Model
         "lead",
         "description",
         "slug",
-        "is_active"
+        "is_active",
+        "is_favorite"
     ];
 
     public function category()

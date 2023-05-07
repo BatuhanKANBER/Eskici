@@ -56,11 +56,11 @@ class ProfileController extends Controller
         return \view("ui.order.index", ["orders" => $orders, "categories" => $categories, "user" => $user]);
     }
 
-    public function orderView($id)
+    public function orderView(User $user,$id):View
     {
-        $user = Auth::user();
+        $addrs = $user->addrs;
         $categories = Category::all()->where("is_active", true);
         $orders = Order::where('order_id', $id)->where('user_id', Auth::id())->first();
-        return view("ui.order.order_details", compact('orders', 'user', 'categories'));
+        return view("ui.order.order_details", compact('orders', 'addrs', 'categories'));
     }
 }

@@ -81,10 +81,10 @@
             }
         </style>
     </head>
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="container py-5 h-100 ">
+        <div class="row d-flex justify-content-center align-items-center h-100 ">
             <div class="col-md-12">
-                <div class="card card-stepper" style="border-radius: 16px;">
+                <div class="card card-stepper bg-secondary" style="border-radius: 16px;">
                     @if(count($orders->details)>0)
                         @foreach($orders->details as $order)
                             <div class="card-header p-4">

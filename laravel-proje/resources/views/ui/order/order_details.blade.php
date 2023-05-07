@@ -88,8 +88,8 @@
                         class="rounded-circle mt-5"
                         width="150px"
                         src="{{url("ui/img/member.png")}}"><span
-                        class="font-weight-bold">{{$user->name." ".$user->surname}}</span><span
-                        class="text-black-50">{{$user->email}}</span><span> </span></div>
+                        class="font-weight-bold">{{Auth::user()->name." ".Auth::user()->surname}}</span><span
+                        class="text-black-50">{{Auth::user()->email}}</span><span> </span></div>
             </div>
             <div class="col-md-9">
                 <div class="card card-stepper" style="border-radius: 16px;">
@@ -118,7 +118,7 @@
                                     <div>
                                         <img
                                             src="{{asset("/storage/products/".$order->product->images[0]->image_url)}}"
-                                            alt="{{$order->product->images[0]->alt}}" width="100">
+                                            alt="{{$order->product->images[0]->alt}}" width="200">
                                     </div>
                                 </div>
                                 <ul id="progressbar-1" class="mx-0 mt-0 mb-5 px-0 pt-0 pb-4">
@@ -143,12 +143,78 @@
                                         <li class="step0  text-center" id="step2"><span>Kargoya Verildi</span></li>
                                         <li class="step0  text-right " id="step3"><span>Teslim Edildi</span></li>
                                     @endif
-
-
                                 </ul>
                             </div>
                         @endforeach
                     @endif
+                        @if(count($addrs)>0)
+                        @foreach($addrs as $address)
+                            @if($address->is_default==true)
+                                    <div class="row px-xl-5">
+                                        <div class="col">
+                                            <div class="nav nav-tabs justify-content-center border-secondary mb-4">
+                                                <a class="nav-item nav-link active" data-toggle="tab" href="#tab-pane-1">Teslimat Adresi</a>
+                                                <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-2">Fatura Adresi</a>
+                                            </div>
+                                            <div class="tab-content">
+                                                <div class="tab-pane fade show active" id="tab-pane-1">
+                                                    <div class="d-flex flex-row mb-4 pb-2">
+                                                        <div class="flex-fill w-100">
+                                                            <div class="d-flex">
+                                                                <h5 class="bold">Adres Başlığı:</h5>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <h5 class="text-muted">{{$address->tittle}}</h5>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="d-flex">
+                                                                <h5 class="bold">İl:</h5>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <h5 class="text-muted">{{$address->city}}</h5>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="d-flex">
+                                                                <h5 class="bold">İlçe:</h5>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <h5 class="text-muted">{{$address->district}}</h5>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="d-flex">
+                                                                <h5 class="bold">İlçe:</h5>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <h5 class="text-muted">{{$address->address_description}}</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="tab-pane-2">
+                                                    <div class="d-flex flex-row mb-4 pb-2">
+                                                        <div class="flex-fill w-100">
+                                                            <div class="d-flex">
+                                                                <h5 class="bold">Adres Başlığı:</h5>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <h5 class="text-muted">{{$address->tittle}}</h5>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="d-flex">
+                                                                <h5 class="bold">İl:</h5>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <h5 class="text-muted">{{$address->city}}</h5>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="d-flex">
+                                                                <h5 class="bold">İlçe:</h5>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <h5 class="text-muted">{{$address->district}}</h5>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="d-flex">
+                                                                <h5 class="bold">İlçe:</h5>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <h5 class="text-muted">{{$address->address_description}}</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            @endif
+                        @endforeach
+                        @else
+                            <h1>YOK</h1>
+                        @endif
                 </div>
             </div>
         </div>

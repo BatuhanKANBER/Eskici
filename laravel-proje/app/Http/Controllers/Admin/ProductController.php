@@ -60,8 +60,10 @@ class ProductController extends Controller
         $description = $request->get("description");
         $slug = $request->get("slug");
         $is_active = $request->get("is_active", default: 0);
+        $is_favorite = $request->get("is_favorite", default: 0);
 
         $is_active = $is_active == "on" ? 1 : 0;
+        $is_favorite = $is_favorite == "on" ? 1 : 0;
 
         $product = new Product();
         $product->name = $name;
@@ -72,6 +74,7 @@ class ProductController extends Controller
         $product->description = $description;
         $product->slug = $slug;
         $product->is_active = $is_active;
+        $product->is_favorite = $is_favorite;
         $product->save();
 
         return Redirect::to("/products");
@@ -106,8 +109,10 @@ class ProductController extends Controller
         $description = $request->get("description");
         $slug = $request->get("slug");
         $is_active = $request->get("is_active", default: 0);
+        $is_favorite = $request->get("is_favorite", default: 0);
 
         $is_active = $is_active == "on" ? 1 : 0;
+        $is_favorite = $is_favorite == "on" ? 1 : 0;
 
         $product->name = $name;
         $product->category_id = $category_id;
@@ -117,6 +122,7 @@ class ProductController extends Controller
         $product->description = $description;
         $product->slug = $slug;
         $product->is_active = $is_active;
+        $product->is_favorite = $is_favorite;
         $product->save();
 
         return Redirect::to("/products");

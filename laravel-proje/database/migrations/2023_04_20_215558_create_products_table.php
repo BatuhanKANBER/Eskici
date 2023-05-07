@@ -23,6 +23,7 @@ return new class extends Migration {
             $table->text("description");
             $table->string("slug");
             $table->boolean("is_active");
+            $table->boolean("is_favorite");
             $table->softDeletes();
             $table->timestamps();
         });

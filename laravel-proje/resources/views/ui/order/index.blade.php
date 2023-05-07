@@ -32,9 +32,9 @@
                                 <td class="align-middle">
                                     @if(\Illuminate\Support\Facades\Auth::user())
                                         @if(\Illuminate\Support\Facades\Auth::user()->role=="admin")
-                                            <a href="{{"/admin/order/$order->order_id"}}"><i class="fa fa-eye"></i></a>
+                                            <a href="{{"/admin/$user->user_id/order/$order->order_id"}}"><i class="fa fa-eye"></i></a>
                                         @elseif(\Illuminate\Support\Facades\Auth::user()->role=="user")
-                                            <a href="{{"/user/order/$order->order_id"}}"><i class="fa fa-eye"></i></a>
+                                            <a href="{{"/user/$user->user_id/order/$order->order_id"}}"><i class="fa fa-eye"></i></a>
                                         @endif
                                     @endif
                                     -
